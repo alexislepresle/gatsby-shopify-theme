@@ -8,15 +8,12 @@ const Header = ({ siteTitle }) => (
       <h1 className="navbar-item has-text-black	has-text-weight-bold">
         <Link className="has-text-black" to="/">{siteTitle}</Link>
       </h1>
-      <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
     </div>
-    <div className="navbar-end"  style={{marginRight:"30px"}}>
+    <div className="navbar-end is-active"  style={{marginRight:"30px"}}>
       <div className="navbar-item">
-        <i className="fas fa-shopping-bag"></i>
+        <Link className="has-text-black" to="/cart">
+          <button className="button is-rounded" data-badge="0"><i className="fas fa-shopping-bag" ></i></button>
+        </Link>
       </div>
     </div>
   </nav>

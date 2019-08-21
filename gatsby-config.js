@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby & Shopify`,
@@ -17,8 +21,8 @@ module.exports = {
     {
       resolve: "gatsby-source-shopify",
       options: {
-        shopName: "gatsby-shop-course",
-        accessToken: "52ac7057b919bddaa71b290aa21c7c4c",
+        shopName: process.env.SHOP_NAME,
+        accessToken: process.env.SHOPIFY_ACCESS_TOKEN,
         verbose: true,
         paginationSize: 250,
         includeCollections: ["shop", "content"],

@@ -18,7 +18,7 @@ const IndexPage = ({data}) => {
             <a href={`/product/${product.node.handle}`}>
               <div className="box">
                   <figure>
-                    <img src={product.node.images[0].originalSrc} alt={product.node.title} />
+                    <img className="img-shop" src={product.node.images[0].originalSrc} alt={product.node.title} />
                   </figure>
                   <p className="has-text-weight-semibold">{product.node.title}</p>
                   <div className="columns">

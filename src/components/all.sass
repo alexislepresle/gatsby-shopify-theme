@@ -1,1 +1,36 @@
 @import "~bulma"
+
+.img-shop
+    padding: 5px
+
+.img-shop :hover
+    padding: 0px 
+
+
+[data-badge]::after 
+    display: inline-block
+    position: absolute
+    margin: 0
+    padding: .1rem .25rem
+    text-align: center
+    white-space: nowrap
+    line-height: 1
+    background: $dark
+    background-clip: padding-box
+    border-radius: 0
+    box-shadow: 0 0 0 1px #fff
+    color: #fff
+    content: attr(data-badge)
+    z-index: 99
+    border-radius: 290486px
+
+[data-badge]::after 
+    min-width: 1rem
+    min-height: 1rem
+    font-size: .75rem
+    top: 0
+    right: 0
+    bottom: auto
+    left: auto
+    -webkit-transform: translate(50%,-50%)
+    transform: translate(50%,-50%)
