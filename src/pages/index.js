@@ -1,5 +1,4 @@
 import React from "react"
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { graphql } from "gatsby"
 
@@ -7,7 +6,7 @@ const IndexPage = ({data}) => {
   const { edges: products } = data.allShopifyProduct
  
   return(
-    <Layout>
+    <>
     <SEO title="Home" />
     <section className="hero is-dark is-fullheight-with-navbar">
       <div className="hero-body">
@@ -37,7 +36,7 @@ const IndexPage = ({data}) => {
         </div>
       </div>
     </section>
-  </Layout>
+  </>
   )
 }
 

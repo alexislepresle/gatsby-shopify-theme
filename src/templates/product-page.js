@@ -1,39 +1,27 @@
-import React, { useContext, useState, useEffect } from 'react' /* eslint-disable */
-import Layout from "../components/layout"
+import React, { useContext, useState } from 'react' /* eslint-disable */
+
 import SEO from "../components/seo"
 import { graphql } from "gatsby"
 import ProductInfo from "../components/productInfo"
-import Store from '../context/store'
+import StoreContext from '../context/store'
 import VariantSelectors from "../components/variantSelectors"
+import PropTypes from 'prop-types'
 
 const productPage = ({ data }) => {
     const product = data.shopifyProduct;
     const [quantity, setQuantity] = useState(1);
     const [variant, setVariant] = useState(product.variants[0]);
 
-    const context = useContext(Store);
+    const context = useContext(StoreContext);
     const productVariant = context.client.product.helpers.variantForOptions(product, variant) || variant;
-    const [available, setAvailable] = useState(productVariant.availableForSale)
 
-    const handleSubmit = callback => event => {
-        event.preventDefault();
-        callback(productVariant.shopifyId, quantity);
-        console.log(context.checkout.lineItems)
-      };
+
     
-
-    useEffect(() => {
-        CheckIfAvailable(product.shopifyId)
-    }, [productVariant])
-
-    const CheckIfAvailable = (shopifyId) => {
-        context.client.product.fetch(shopifyId).then((product) => {
-            const result = product.variants.filter(
-                variant => variant.id === productVariant.shopifyId
-            )
-            setAvailable(result[0].available)
-        })
+    const handleAddToCart = () => {
+        context.addVariantToCart(productVariant.shopifyId, quantity)
+        console.log(context)
     }
+    
 
     const handleOptionChange = event => {
         const { target } = event
@@ -54,10 +42,7 @@ const productPage = ({ data }) => {
 
 
     return (
-        <Store.Consumer>
-            {({ addVariantToCart }) => (
-
-            <Layout>
+            <>
                 <SEO title={product.title} />
                 <section className="hero is-dark is-fullheight-with-navbar">
                     <div className="hero-body">
@@ -112,8 +97,8 @@ const productPage = ({ data }) => {
                                         <button
                                             className="button is-link is-medium is-fullwidth"
                                             type="submit"
-                                            disabled={!available}
-                                            onClick={handleSubmit(addVariantToCart)}
+                                            //disabled={!available}
+                                            onClick={handleAddToCart}
                                         >
                                             Add to Cart
                                         </button>
@@ -123,12 +108,12 @@ const productPage = ({ data }) => {
                         </div>
                     </div>
                 </section>
-            </Layout>
-            )}
-        </Store.Consumer>
+        </>
     )
 }
-
+productPage.propTypes = {
+    addVariantToCart: PropTypes.func,
+}
 export default productPage
 
 export const query = graphql`
