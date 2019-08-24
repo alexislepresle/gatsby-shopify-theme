@@ -26,8 +26,10 @@ const line_item = props => {
                         {imageItem}
                     </div>
                     <div className="column">
-                        <p className="has-text-weight-semibold is-size-5">{line_item.title}</p>
-                        <p className="has-text-weight-normal">{line_item.variant.title}</p>
+                    <a href={`/product/${String(line_item.title).toLowerCase().replace(/\s+/g, '-')}`}>
+                        <p className="has-text-weight-semibold is-size-5 has-text-black">{line_item.title}</p>
+                        <p className="has-text-weight-normal has-text-black">{line_item.variant.title}</p>
+                    </a>
                         <p className="has-text-weight-normal" onClick={removeItem}>Delete</p>
 
                     </div>

@@ -2,19 +2,19 @@ import React from 'react'; /* eslint-disable */
 import PropTypes from 'prop-types'
 
 const VariantSelector = props => {
-    const name = props.options.name
+    const {options} = props
     return (
         <div className="field is-horizontal">
             <div className="field-label is-normal">
-                <label className="label">{props.options.name} : </label>
+                <label className="label">{options.name} : </label>
             </div>
             <div className="field-body">
                 <div className="select">
-                    <select onChange={props.onChange} name={props.options.name}>
+                    <select onChange={props.onChange} name={(options.name)} key={options.id}>
                         {
-                            props.options.values.map(value => (
+                            options.values.map(value => (
                                 <option 
-                                    key={value} 
+                                    key={`${options.name}-${value}`}
                                     value={value}
                                     className="is-medium"
                                 >
