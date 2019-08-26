@@ -6,6 +6,7 @@ import ProductInfo from "../components/productInfo"
 import StoreContext from '../context/store'
 import VariantSelectors from "../components/variantSelectors"
 import PropTypes from 'prop-types'
+import Img from "gatsby-image"
 
 const productPage = ({ data }) => {
     const product = data.shopifyProduct;
@@ -14,16 +15,13 @@ const productPage = ({ data }) => {
     const context = useContext(StoreContext);
     const productVariant = context.client.product.helpers.variantForOptions(product, variant) || variant;
     //const [available, setAvailable] = useState(productVariant.availableForSale)
-    console.log("productVariant",productVariant)
-    console.log("product",product)
-    console.log("variant",variant)
-    console.log("context",context.client.product.helpers.variantForOptions(product, variant))
+
 
     useEffect(() => {
         let defaultOptionValues = {}
-            product.options.forEach(selector => {
-                defaultOptionValues[selector.name] = selector.values[0]
-            })
+        product.options.forEach(selector => {
+            defaultOptionValues[selector.name] = selector.values[0]
+        })
         setVariant(defaultOptionValues)
     }, [])
 
@@ -49,10 +47,10 @@ const productPage = ({ data }) => {
     const handleOptionChange = event => {
         const { target } = event
         setVariant(prevState => ({
-          ...prevState,
-          [target.name]: target.value,
+            ...prevState,
+            [target.name]: target.value,
         }))
-      }
+    }
 
     function increaseQuantity() {
         setQuantity(q => q + 1);
@@ -71,9 +69,13 @@ const productPage = ({ data }) => {
                         <div className="columns is-multiline is-vcentered">
                             <div className="column" style={{ marginBottom: "40px" }}>
                                 <div className="box">
-                                    <figure>
-                                        <img src={product.images[0].originalSrc} alt={product.title} />
-                                    </figure>
+                                    {product.images.map(x => (
+                                        <Img
+                                            fluid={x.localFile.childImageSharp.fluid}
+                                            key={x.localFile.id}
+                                            alt={product.title}
+                                        />
+                                    ))}
                                 </div>
                             </div>
                             <div className="column is-5" style={{ marginBottom: "40px" }}>
@@ -142,9 +144,6 @@ export const query = graphql`
   query($id: String!){
                 shopifyProduct(handle: {eq: $id}) {
                 handle
-        images {
-                originalSrc
-            }
             id
             title
             handle
@@ -165,6 +164,17 @@ export const query = graphql`
                 selectedOptions {
                   name
                   value
+                }
+              }
+              images {
+                originalSrc
+                id
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 910) {
+                      ...GatsbyImageSharpFluid_noBase64
+                    }
+                  }
                 }
               }
         } 

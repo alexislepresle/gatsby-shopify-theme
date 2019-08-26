@@ -1,6 +1,7 @@
 import React from "react"
 import SEO from "../components/seo"
 import { graphql } from "gatsby"
+import Img from "gatsby-image"
 
 const IndexPage = ({data}) => {
   const { edges: products } = data.allShopifyProduct
@@ -16,9 +17,11 @@ const IndexPage = ({data}) => {
           <div className="column is-3" style={{marginBottom:"40px"}}>
             <a href={`/product/${product.node.handle}`}>
               <div className="box">
-                  <figure>
-                    <img className="img-shop" src={product.node.images[0].originalSrc} alt={product.node.title} />
-                  </figure>
+                  <Img
+                      fluid={product.node.images[0].localFile.childImageSharp.fluid}
+                      key={product.node.images[0].localFile.id}
+                      alt={product.node.title}
+                  />          
                   <p className="has-text-weight-semibold">{product.node.title}</p>
                   <div className="columns">
                     <div className="column has-text-left is-uppercase">
@@ -54,6 +57,14 @@ export const query = graphql`
           vendor
           images {
             originalSrc
+            id
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 910) {
+                  ...GatsbyImageSharpFluid_noBase64
+                }
+              }
+            }
           }
           variants {
             id

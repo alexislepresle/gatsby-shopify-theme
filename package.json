@@ -8,7 +8,7 @@
     "bulma": "^0.7.5",
     "dotenv": "^8.1.0",
     "gatsby": "^2.13.66",
-    "gatsby-image": "^2.2.8",
+    "gatsby-image": "^2.2.14",
     "gatsby-plugin-layout": "^1.1.4",
     "gatsby-plugin-manifest": "^2.2.5",
     "gatsby-plugin-modal-routing": "^1.0.2",
