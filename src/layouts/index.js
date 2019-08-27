@@ -63,7 +63,23 @@ class Layout extends Component {
                         }))
                     })
             },
-        },
+            updateFilterType: type => {
+                this.setState(state => ({
+                store: {
+                    ...state.store,
+                    filteredType: type,
+                },
+                }))
+            },
+            updateFilterSort: sort => {
+                this.setState(state => ({
+                store: {
+                    ...state.store,
+                    filteredSort: sort,
+                },
+                }))
+            }
+        }
     }
 
     async initializeCheckout() {
