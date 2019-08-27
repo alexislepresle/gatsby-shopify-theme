@@ -13,12 +13,10 @@ const IndexPage = ({data}) => {
 
   useEffect(() => {
     context.updateFilterType(type)
-    console.log("type",type)
   }, type)
 
   useEffect(() => {
     context.updateFilterSort(sort)
-    console.log("sort",sort)
   }, sort)
 
   const sorts = []
@@ -106,7 +104,14 @@ const IndexPage = ({data}) => {
             <div className="columns is-multiline ">
               {
                 context.filteredType === 'all'
-                  ? products.map((p, i) => {
+                  ? products
+                    .sort(
+                      context.filteredSort === "low" ? ((a, b) => a.node.variants[0].price - b.node.variants[0].price)
+                        : context.filteredSort === "high" ? ((a, b) => b.node.variants[0].price - a.node.variants[0].price)
+                          : context.filteredSort === "Z-A" ? ((a, b) => b.node.title.localeCompare(a.node.title))
+                            : ((a, b) => a.node.title.localeCompare(b.node.title))
+                    )
+                    .map((p, i) => {
                     let product = p
                     return (
                       <div className="column is-3" style={{ marginBottom: "40px" }} key={i}>
