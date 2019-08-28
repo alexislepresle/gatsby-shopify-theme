@@ -13,11 +13,11 @@ const IndexPage = ({data}) => {
 
   useEffect(() => {
     context.updateFilterType(type)
-  }, type)
+  })
 
   useEffect(() => {
     context.updateFilterSort(sort)
-  }, sort)
+  })
 
   const sorts = []
 
@@ -67,7 +67,7 @@ const IndexPage = ({data}) => {
       <section className="hero is-dark">
         <div className="hero-body">
           <div className="container">
-            <div className="columns">
+            <div className="columns fromleft" style={{marginBottom:"60px"}}>
               <div className="column is-offset-8">
                 <label className="has-text-weight-semibold is-uppercase" style={{margin:"-20px"}}>SORT BY :</label>
                 <div className="field">
@@ -121,6 +121,12 @@ const IndexPage = ({data}) => {
                   })
                   : products
                     .filter(p => p.node.productType.includes(context.filteredType))
+                    .sort(
+                      context.filteredSort === "low" ? ((a, b) => a.node.variants[0].price - b.node.variants[0].price)
+                        : context.filteredSort === "high" ? ((a, b) => b.node.variants[0].price - a.node.variants[0].price)
+                          : context.filteredSort === "Z-A" ? ((a, b) => b.node.title.localeCompare(a.node.title))
+                            : ((a, b) => a.node.title.localeCompare(b.node.title))
+                    )
                     .map((p, i) => {
                       let product = p
                       return (

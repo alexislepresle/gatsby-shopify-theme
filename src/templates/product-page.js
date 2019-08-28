@@ -12,9 +12,12 @@ const productPage = ({ data }) => {
     const product = data.shopifyProduct;
     const [quantity, setQuantity] = useState(1);
     const [variant, setVariant] = useState(product.variants[0]);
+    const [currentImage, setCurrentImage] = useState(product.images[0]);
     const context = useContext(StoreContext);
     const productVariant = context.client.product.helpers.variantForOptions(product, variant) || variant;
     //const [available, setAvailable] = useState(productVariant.availableForSale)
+    const { checkout } = context
+
 
 
     useEffect(() => {
@@ -66,16 +69,44 @@ const productPage = ({ data }) => {
             <section className="hero is-dark is-fullheight-with-navbar">
                 <div className="hero-body">
                     <div className="container">
-                        <div className="columns is-multiline is-vcentered">
+                        <div className="columns">
                             <div className="column" style={{ marginBottom: "40px" }}>
                                 <div className="box">
-                                    {product.images.map(x => (
+                                    <div className="img-hover-zoom--zoom-n-rotate img-hover-zoom">
                                         <Img
-                                            fluid={x.localFile.childImageSharp.fluid}
-                                            key={x.localFile.id}
+                                            fluid={currentImage.localFile.childImageSharp.fluid}
+                                            key={currentImage.localFile.id}
                                             alt={product.title}
+                                            className="imgProduct"
                                         />
-                                    ))}
+                                    </div>
+                                    <div className="columns is-multiline is-mobile">
+                                        {product.images.map((x, i)=> (
+                                                currentImage === product.images[i] ?
+                                                    <div className="column is-2" key={i} //onClick={zoom.open()}
+                                                    >
+                                                        <Img
+                                                    
+                                                            fluid={x.localFile.childImageSharp.fluid}
+                                                            alt={product.title}
+                                                            loading="auto"
+                                                            imgStyle={{WebkitFilter: "blur(1px)", border: "3px solid black"}}                                                            
+                                                        />
+                                                    </div>
+                                                    :
+                                                    <div className="column is-2"  >
+                                                        <div onClick={e=>setCurrentImage(product.images[i])} >
+                                                            <Img
+                                                                fluid={x.localFile.childImageSharp.fluid}
+                                                                loading="auto" 
+                                                                durationFadeIn={500*i}
+                                                                alt={product.title}
+                                                                
+                                                            />
+                                                        </div>
+                                                    </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                             <div className="column is-5" style={{ marginBottom: "40px" }}>
@@ -101,7 +132,7 @@ const productPage = ({ data }) => {
                                                 <div className="control">
                                                     <button className="button is-link" onClick={decreaseQuantity}>
                                                         -
-                                                        </button>
+                                                    </button>
                                                 </div>
                                                 <div className="control">
                                                     <button className="button">
@@ -118,17 +149,39 @@ const productPage = ({ data }) => {
                                     </div>
 
                                     <hr />
-                                    <button
+                                    <a
                                         className="button is-link is-medium is-fullwidth"
                                         type="submit"
                                         //disabled={!available}
                                         onClick={handleAddToCart}
                                     >
                                         Add to Cart
-                                        </button>
+                                    </a>
+                                    <a
+                                        className="button is-dark is-medium is-fullwidth"
+                                        style={{marginTop:"20px"}}
+                                        type="submit"
+                                        //disabled={!available}
+                                        href={checkout.webUrl}
+                                    >
+                                        Buy It Now
+                                    </a>
+                                    <hr/>
+                                    <div
+                                        key={`body`}
+                                        id="content"
+                                        dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+                                    />
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+            <section className="hero is-dark">
+                <div className="hero-body">
+                    <div className="container has-text-centered">
+                        <a className="is-medium button is-light" href="/"> ← Back to the Home</a>
                     </div>
                 </div>
             </section>

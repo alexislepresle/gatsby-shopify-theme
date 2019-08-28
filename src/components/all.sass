@@ -34,3 +34,51 @@
     left: auto
     -webkit-transform: translate(50%,-50%)
     transform: translate(50%,-50%)
+     
+.img-hover-zoom--zoom-n-rotate .imgProduct 
+  transition: transform 2s
+  transform: scale(0.7)
+  transition-timing-function: ease-in
+
+/* The Transformation */
+.img-hover-zoom--zoom-n-rotate:hover .imgProduct 
+  transform: scale(1)
+
+.imgProduct
+    animation-name: zoomIn
+    animation-duration: 2s
+
+@keyframes zoomIn 
+    from
+        opacity: 0.7
+        transform: scale3d(0.5, 0.5, 0.8)
+
+    50%
+        opacity: 1
+        transform: translate3d(0, 0, 0)
+
+.productBox
+    animation-duration: 2s
+    animation-name: bounceOut
+
+@keyframes bounceOut 
+   0%
+        opacity: 0
+        transform: translate3d(0, 50%, 0)
+
+
+   100%
+        opacity: 1 
+        transform: scale3d(1, 1, 1)
+
+.fromleft
+    animation-name: FromLeft
+    animation-duration: 2.5s
+
+@keyframes FromLeft 
+    from
+        opacity: 0.7
+        transform: translate3d(100%, 0, 0)
+    50%
+        opacity: 1
+        transform: translate3d(0, 0, 0)
