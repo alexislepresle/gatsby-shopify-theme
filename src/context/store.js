@@ -15,6 +15,7 @@ export const defaultStoreContext = {
   filteredType: 'all',
   filteredSort: 'featured',
   addVariantToCart: () => {},
+  addVariantToCartAndBuyNow: () => {},
   removeLineItem: () => {},
   updateLineItem: () => {},
 }

@@ -13,17 +13,18 @@ const IndexPage = ({data}) => {
 
   useEffect(() => {
     context.updateFilterType(type)
-  })
+  },[type])
 
   useEffect(() => {
     context.updateFilterSort(sort)
-  })
+    console.log(sort)
+  },[sort])
 
   const sorts = []
 
   sorts.push(
     <>
-      <option key={0} value="Featured">
+      <option key={0} value="featured">
         Featured
       </option>
       <option key={1} value="A-Z">
@@ -67,8 +68,8 @@ const IndexPage = ({data}) => {
       <section className="hero is-dark">
         <div className="hero-body">
           <div className="container">
-            <div className="columns fromleft" style={{marginBottom:"60px"}}>
-              <div className="column is-offset-8">
+            <div className="columns is-mobile" style={{marginBottom:"60px"}}>
+              <div className="column is-2-desktop is-6-mobile">
                 <label className="has-text-weight-semibold is-uppercase" style={{margin:"-20px"}}>SORT BY :</label>
                 <div className="field">
                   <div className="control">
@@ -84,7 +85,7 @@ const IndexPage = ({data}) => {
                   </div>
                 </div>
               </div>
-              <div className="column">
+              <div className="column is-2-desktop is-6-mobile">
                 <label className="has-text-weight-semibold is-uppercase" style={{margin:"-20px"}}>FILTER BY :</label>
                 <div className="field">
                   <div className="control">
@@ -106,10 +107,11 @@ const IndexPage = ({data}) => {
                 context.filteredType === 'all'
                   ? products
                     .sort(
-                      context.filteredSort === "low" ? ((a, b) => a.node.variants[0].price - b.node.variants[0].price)
+                      context.filteredSort === "featured" ? ((a,b) => a.node.createdAt > b.node.createdAt && b.node.priceRange.maxVariantPrice.amount - a.node.priceRange.maxVariantPrice.amount) 
+                      : context.filteredSort === "low" ? ((a, b) => a.node.variants[0].price - b.node.variants[0].price)
                         : context.filteredSort === "high" ? ((a, b) => b.node.variants[0].price - a.node.variants[0].price)
                           : context.filteredSort === "Z-A" ? ((a, b) => b.node.title.localeCompare(a.node.title))
-                            : ((a, b) => a.node.title.localeCompare(b.node.title))
+                            : context.filteredSort === "A-Z" ? ((a, b) => a.node.title.localeCompare(b.node.title)) : null
                     )
                     .map((p, i) => {
                     let product = p
@@ -122,10 +124,11 @@ const IndexPage = ({data}) => {
                   : products
                     .filter(p => p.node.productType.includes(context.filteredType))
                     .sort(
-                      context.filteredSort === "low" ? ((a, b) => a.node.variants[0].price - b.node.variants[0].price)
-                        : context.filteredSort === "high" ? ((a, b) => b.node.variants[0].price - a.node.variants[0].price)
-                          : context.filteredSort === "Z-A" ? ((a, b) => b.node.title.localeCompare(a.node.title))
-                            : ((a, b) => a.node.title.localeCompare(b.node.title))
+                      context.filteredSort === "featured" ? ((a,b) => a.node.createdAt > b.node.createdAt && b.node.priceRange.maxVariantPrice.amount - a.node.priceRange.maxVariantPrice.amount) 
+                        : context.filteredSort === "low" ? ((a, b) => a.node.variants[0].price - b.node.variants[0].price)
+                          : context.filteredSort === "high" ? ((a, b) => b.node.variants[0].price - a.node.variants[0].price)
+                            : context.filteredSort === "Z-A" ? ((a, b) => b.node.title.localeCompare(a.node.title))
+                              : context.filteredSort === "A-Z" ? ((a, b) => a.node.title.localeCompare(b.node.title)) : null
                     )
                     .map((p, i) => {
                       let product = p
@@ -153,8 +156,15 @@ export const query = graphql`
           id
           title
           handle
+          createdAt(fromNow: true)
+          publishedAt
           productType
           vendor
+          priceRange {
+            maxVariantPrice {
+              amount
+            }
+          }
           images {
             originalSrc
             id

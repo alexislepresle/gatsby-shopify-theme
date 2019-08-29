@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import StoreContext, { defaultStoreContext } from '../context/store'
 import Header from "../components/header"
 import "../components/all.sass"
-
+import {navigate} from "@reach/router"
 class Layout extends Component {
     state = {
         store: {
@@ -34,6 +34,32 @@ class Layout extends Component {
                                 adding: false,
                             },
                         }))
+                    })
+            },
+            addVariantToCartAndBuyNow : (variantId, quantity) => {
+                this.setState(state => ({
+                    store: {
+                        ...state.store,
+                        adding: true,
+                    },
+                }))
+
+                const { checkout, client } = this.state.store
+                const checkoutId = checkout.id
+                const lineItemsToUpdate = [
+                    { variantId, quantity: parseInt(quantity, 10) },
+                ]
+                return client.checkout
+                    .addLineItems(checkoutId, lineItemsToUpdate)
+                    .then(checkout => {
+                        this.setState(state => ({
+                            store: {
+                                ...state.store,
+                                checkout,
+                                adding: false,
+                            },
+                        }))
+                        navigate(checkout.webUrl)
                     })
             },
             removeLineItem: (client, checkoutID, lineItemID) => {

@@ -29,6 +29,7 @@
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
     "react-medium-image-zoom": "^3.1.1",
+    "rebass": "^4.0.5",
     "shopify-buy": "^2.7.0"
   },
   "devDependencies": {

@@ -6,7 +6,7 @@ const VariantSelector = props => {
     return (
         <div className="field is-horizontal">
             <div className="field-label is-normal">
-                <label className="label">{options.name} : </label>
+                <label className="label" style={{position: "absolute", paddingRight:"5px"}}>{options.name} : </label>
             </div>
             <div className="field-body">
                 <div className="select">

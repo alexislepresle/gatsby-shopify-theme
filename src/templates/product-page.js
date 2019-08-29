@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react' /* eslint-disable */
-
 import SEO from "../components/seo"
 import { graphql } from "gatsby"
 import ProductInfo from "../components/productInfo"
@@ -7,6 +6,7 @@ import StoreContext from '../context/store'
 import VariantSelectors from "../components/variantSelectors"
 import PropTypes from 'prop-types'
 import Img from "gatsby-image"
+import { Flex, Box } from 'rebass';
 
 const productPage = ({ data }) => {
     const product = data.shopifyProduct;
@@ -43,8 +43,11 @@ const productPage = ({ data }) => {
     }
 
     const handleAddToCart = () => {
-        console.log(context.client.product.helpers)
         context.addVariantToCart(productVariant.shopifyId, quantity)
+    }
+
+    const handleAddToCart_BuyNow = () => {
+        context.addVariantToCartAndBuyNow(productVariant.shopifyId, quantity)
     }
 
     const handleOptionChange = event => {
@@ -52,6 +55,7 @@ const productPage = ({ data }) => {
         setVariant(prevState => ({
             ...prevState,
             [target.name]: target.value,
+            ...console.log(variant)
         }))
     }
 
@@ -69,47 +73,75 @@ const productPage = ({ data }) => {
             <section className="hero is-dark is-fullheight-with-navbar">
                 <div className="hero-body">
                     <div className="container">
-                        <div className="columns">
-                            <div className="column" style={{ marginBottom: "40px" }}>
-                                <div className="box">
-                                    <div className="img-hover-zoom--zoom-n-rotate img-hover-zoom">
-                                        <Img
-                                            fluid={currentImage.localFile.childImageSharp.fluid}
-                                            key={currentImage.localFile.id}
-                                            alt={product.title}
-                                            className="imgProduct"
-                                        />
-                                    </div>
-                                    <div className="columns is-multiline is-mobile">
-                                        {product.images.map((x, i)=> (
-                                                currentImage === product.images[i] ?
-                                                    <div className="column is-2" key={i} //onClick={zoom.open()}
-                                                    >
+
+                        <Flex 
+                            className="box"
+                            flexDirection={['column', null, 'row']}
+                            pt={3}
+                            px={4}
+                        >
+                            <Box
+                                width={[1/2, null, .5/ 5]}
+                                py={2}
+                                px={[2, null, 0]}
+                                order={[2, null, 1]}
+                                //flexDirection={['row', null, 'column']}
+                            >
+                                <Box
+                                    width={1}
+                                    aria-hidden
+                                    style={{ maxHeight: 500, overflow: 'auto'}}
+                                >
+                                    <div className="allpicture">
+                                        {product.images.map((x, i) => (
+                                            currentImage === product.images[i] ?
+                                                <div key={i} style={{ marginBottom: "10px",border:"3px solid black"  }}>
+                                                    <Img
+                                                        fluid={x.localFile.childImageSharp.fluid}
+                                                        alt={product.title}
+                                                        loading="auto"
+                                                        imgStyle={{ WebkitFilter: "blur(1px)", marginBorder: "10px solid black" }}
+                                                    />
+                                                </div>
+                                                :
+                                                <div>
+                                                    <div onMouseOver={e => setCurrentImage(product.images[i])} style={{ marginBottom: "10px" }}>
                                                         <Img
-                                                    
                                                             fluid={x.localFile.childImageSharp.fluid}
-                                                            alt={product.title}
                                                             loading="auto"
-                                                            imgStyle={{WebkitFilter: "blur(1px)", border: "3px solid black"}}                                                            
+                                                            durationFadeIn={500 * i}
+                                                            alt={product.title}
+
                                                         />
                                                     </div>
-                                                    :
-                                                    <div className="column is-2"  >
-                                                        <div onClick={e=>setCurrentImage(product.images[i])} >
-                                                            <Img
-                                                                fluid={x.localFile.childImageSharp.fluid}
-                                                                loading="auto" 
-                                                                durationFadeIn={500*i}
-                                                                alt={product.title}
-                                                                
-                                                            />
-                                                        </div>
-                                                    </div>
+                                                </div>
                                         ))}
                                     </div>
-                                </div>
-                            </div>
-                            <div className="column is-5" style={{ marginBottom: "40px" }}>
+
+                                </Box>
+                            </Box>
+                            <Box
+                                width={[1, null, 2.5 / 5]}
+                                ml="auto"
+                                py={2}
+                                px={[2, null, 3]}
+                                order={[1, null, 2]}
+                                className="img-hover-zoom--zoom-n-rotate img-hover-zoom"
+                            >
+                                <Img
+                                    fluid={currentImage.localFile.childImageSharp.fluid}
+                                    key={currentImage.localFile.id}
+                                    alt={product.title}
+                                    className="imgProduct"
+                                />
+                            </Box>
+                            <Box
+                                flexDirection="column"
+                                width={[1, null, 2 / 5]}
+                                px={2}
+                                data-product-info
+                                order={3}
+                            >
                                 <div className="box">
                                     <ProductInfo
                                         product={product}
@@ -125,7 +157,7 @@ const productPage = ({ data }) => {
                                     }
                                     <div className="field is-horizontal" style={{ marginTop: "10px" }}>
                                         <div className="field-label is-normal">
-                                            <label className="label">Quantity :</label>
+                                            <label className="label" style={{position: "absolute"}}>Quantity :</label>
                                         </div>
                                         <div className="field-body">
                                             <div className="field has-addons">
@@ -159,22 +191,23 @@ const productPage = ({ data }) => {
                                     </a>
                                     <a
                                         className="button is-dark is-medium is-fullwidth"
-                                        style={{marginTop:"20px"}}
+                                        style={{ marginTop: "20px" }}
                                         type="submit"
                                         //disabled={!available}
-                                        href={checkout.webUrl}
+                                        onClick={handleAddToCart_BuyNow}
                                     >
                                         Buy It Now
                                     </a>
-                                    <hr/>
+                                    <hr />
                                     <div
                                         key={`body`}
                                         id="content"
+                                        className="content"
                                         dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
                                     />
                                 </div>
-                            </div>
-                        </div>
+                            </Box>
+                        </Flex>
                     </div>
                 </div>
             </section>

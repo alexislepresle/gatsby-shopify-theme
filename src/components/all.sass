@@ -15,25 +15,21 @@
     text-align: center
     white-space: nowrap
     line-height: 1
-    background: $dark
+    background: #ea3c3c
     background-clip: padding-box
     border-radius: 0
     box-shadow: 0 0 0 1px #fff
-    color: #fff
+    color: #ea3c3c
     content: attr(data-badge)
     z-index: 99
-    border-radius: 290486px
+    border-radius: 999999px
 
 [data-badge]::after 
-    min-width: 1rem
-    min-height: 1rem
-    font-size: .75rem
-    top: 0
-    right: 0
+    min-width: 0.75rem
+    min-height: .75rem
+    font-size: .25rem
     bottom: auto
-    left: auto
-    -webkit-transform: translate(50%,-50%)
-    transform: translate(50%,-50%)
+    left: 25px
      
 .img-hover-zoom--zoom-n-rotate .imgProduct 
   transition: transform 2s
@@ -42,7 +38,7 @@
 
 /* The Transformation */
 .img-hover-zoom--zoom-n-rotate:hover .imgProduct 
-  transform: scale(1)
+  transform: scale(0.9)
 
 .imgProduct
     animation-name: zoomIn
@@ -51,15 +47,30 @@
 @keyframes zoomIn 
     from
         opacity: 0.7
-        transform: scale3d(0.5, 0.5, 0.8)
+        transform: scale3d(0.6, 0.6, 0.8)
 
     50%
         opacity: 1
-        transform: translate3d(0, 0, 0)
+        transform: scale3d(0.7, 0.7, 0)
 
 .productBox
     animation-duration: 2s
     animation-name: bounceOut
+
+.productBox :hover
+    animation-duration: 2s
+    animation-timing-function: ease
+    animation-name: hoverProduct
+    animation-direction: alternate
+
+@keyframes hoverProduct 
+    from
+        opacity: 1
+    50%
+        opacity: 0.7
+    100%
+        opacity: 1
+
 
 @keyframes bounceOut 
    0%
@@ -82,3 +93,7 @@
     50%
         opacity: 1
         transform: translate3d(0, 0, 0)
+
+.allpictures
+    animation-name: zoomIn
+    animation-duration: 2.5s
