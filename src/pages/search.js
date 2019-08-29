@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState} from 'react'
 import SEO from "../components/seo"
 import { graphql } from "gatsby"
 import ProductBox from "../components/productBox"
 const IndexPage = ({ data }) => {
     const { edges: products } = data.allShopifyProduct
-    const [search, setSearch] = useState(document.location.search.substring(7).split('=')[0])
+    const windowGlobal = typeof window !== 'undefined' && window
 
+    const [search, setSearch] = useState(windowGlobal.location.search.substring(7).split('=')[0])
 
     return (
         <>
