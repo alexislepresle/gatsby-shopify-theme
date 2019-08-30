@@ -124,7 +124,7 @@ const IndexPage = ({data}) => {
                   : products
                     .filter(p => p.node.productType.includes(context.filteredType))
                     .sort(
-                      context.filteredSort === "featured" ? ((a,b) => a.node.createdAt > b.node.createdAt && b.node.priceRange.maxVariantPrice.amount - a.node.priceRange.maxVariantPrice.amount) 
+                      context.filteredSort === "featured" ? (a) =>(a) 
                         : context.filteredSort === "low" ? ((a, b) => a.node.variants[0].price - b.node.variants[0].price)
                           : context.filteredSort === "high" ? ((a, b) => b.node.variants[0].price - a.node.variants[0].price)
                             : context.filteredSort === "Z-A" ? ((a, b) => b.node.title.localeCompare(a.node.title))
