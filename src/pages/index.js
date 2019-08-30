@@ -70,34 +70,36 @@ const IndexPage = ({ data }) => {
           <div className="container">
             <div className="columns is-mobile" style={{ marginBottom: "60px", marginLeft: "10px"}}>
               <div className="column is-2-desktop is-6-mobile">
-                <label className="has-text-weight-semibold is-uppercase" style={{ margin: "-20px" }}>SORT BY :</label>
-                <div className="field">
-                  <div className="control">
-                    <div className="select">
-                      <select
-                        defaultvalues={sort}
-                        onChange={e => setSort(e.target.value)}
-                      >
-                        {sorts}
-                      </select>
+                <label className="has-text-weight-semibold is-uppercase" style={{ margin: "-20px" }}>SORT BY :
+                  <div className="field">
+                    <div className="control">
+                      <div className="select">
+                        <select
+                          defaultvalues={sort}
+                          onChange={e => setSort(e.target.value)}
+                        >
+                          {sorts}
+                        </select>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </label>
               </div>
               <div className="column is-2-desktop is-6-mobile">
-                <label className="has-text-weight-semibold is-uppercase" style={{ margin: "-20px" }}>FILTER BY :</label>
-                <div className="field">
-                  <div className="control">
-                    <div className="select">
-                      <select
-                        defaultvalues={type}
-                        onChange={e => setType(e.target.value)}
-                      >
-                        {types}
-                      </select>
+                <label className="has-text-weight-semibold is-uppercase" style={{ margin: "-20px" }}>FILTER BY :
+                  <div className="field">
+                    <div className="control">
+                      <div className="select">
+                        <select
+                          defaultvalues={type}
+                          onChange={e => setType(e.target.value)}
+                        >
+                          {types}
+                        </select>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </label>
               </div>
             </div>
             <div className="columns is-multiline ">
