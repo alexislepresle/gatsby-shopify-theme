@@ -20,6 +20,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-146773242-1",
+      },
+    },
+    {
       resolve: "gatsby-source-shopify2",
       options: {
         shopName: process.env.SHOP_NAME,

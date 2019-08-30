@@ -22,6 +22,7 @@ const Line_item = props => {
         <tr>
             <th >
                 <div className="columns">
+                    <hr/>
                     <div className="column">
                         {imageItem}
                     </div>
