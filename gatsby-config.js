@@ -5,8 +5,8 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: `Gatsby & Shopify`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    description: `Simple theme to build a blazing simple and fast store with Gatsby and Shopify.`,
+    author: `@alexislepresle`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -40,11 +40,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `gatsby-shopify-theme`,
+        short_name: `gatsby-shopify`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#333`,
+        theme_color: `#333`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`,
       },

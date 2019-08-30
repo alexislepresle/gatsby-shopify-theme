@@ -176,9 +176,9 @@ class Layout extends Component {
                             {children}
                             <footer className="footer">
                                 <div className="content has-text-centered">
-                                    <p>
-                                        <strong>Gatsby x Shopify</strong> by <a href="https://alexislepresle.com">Alexis Lepresle</a>
-                                    </p>
+                                    <p><strong>Gatsby x Shopify</strong> by <a href="https://alexislepresle.com">Alexis Lepresle</a></p>
+                                        <a className="button is-dark" style={{marginRight:"10px"}} href="https://github.com/alexislepresle/Gatsby-E-commerce-course">Github</a>
+                                        <a className="button is-dark"href="https://school.alexislepresle.com/courses/build-an-ecommerce-website-with-gatsby-js-1/">Online Course</a>
                                 </div>
                             </footer>
                         </>

@@ -1,9 +1,9 @@
 {
-  "name": "Gatsby-Shopify",
+  "name": "Gatsby-Shopify-theme",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Simple theme to build a blazing simple and fast store with Gatsby and Shopify",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Alexis Lepresle <contact@alexislepresle.com>",
   "dependencies": {
     "bulma": "^0.7.5",
     "dotenv": "^8.1.0",
