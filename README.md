@@ -15,6 +15,7 @@ Kick off your project with this ecommerce website. This starter ships with the m
 This starter also includes credentials to a Shopify demo store so you can try it out immediately without having to start a store. To use your own just change the values inside of .env.
 
 If you have questions feel free to message me on [Twitter](https://twitter.com/alexislepresle) or  [Instagram](https://instagram.com/alexislepresle) 🤙🏻
+For project : [Email ME](/mailto:contact@alexislepresle.com)
 
 ## 🔥 Featured
 
