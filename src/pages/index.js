@@ -107,11 +107,11 @@ const IndexPage = ({ data }) => {
                 context.filteredType === 'all'
                   ? products
                     .sort(
-                      context.filteredSort === "featured" ? ((a, b) => a.node.createdAt > b.node.createdAt && b.node.priceRange.maxVariantPrice.amount - a.node.priceRange.maxVariantPrice.amount)
-                        : context.filteredSort === "low" ? ((a, b) => a.node.variants[0].price - b.node.variants[0].price)
-                          : context.filteredSort === "high" ? ((a, b) => b.node.variants[0].price - a.node.variants[0].price)
-                            : context.filteredSort === "Z-A" ? ((a, b) => b.node.title.localeCompare(a.node.title))
-                              : context.filteredSort === "A-Z" ? ((a, b) => a.node.title.localeCompare(b.node.title)) : null
+
+                      context.filteredSort === "low" ? ((a, b) => a.node.variants[0].price - b.node.variants[0].price)
+                        : context.filteredSort === "high" ? ((a, b) => b.node.variants[0].price - a.node.variants[0].price)
+                          : context.filteredSort === "Z-A" ? ((a, b) => b.node.title.localeCompare(a.node.title))
+                            : ((a, b) => a.node.title.localeCompare(b.node.title))
                     )
                     .map((p, i) => {
                       let product = p
