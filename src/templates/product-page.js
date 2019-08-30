@@ -10,6 +10,7 @@ import { Flex, Box } from 'rebass';
 import styled from 'styled-components';
 import ReactNotification from 'react-notifications-component'
 import { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css'
 
 
 const ThumbnailBox = styled(Box)(() => ({
