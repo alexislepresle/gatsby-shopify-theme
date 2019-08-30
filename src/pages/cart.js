@@ -42,7 +42,7 @@ const Cart = () => {
                 <div className="hero-body">
                     <div className="container">
                         <div className="columns is-vcentered">
-                            <div className="column">
+                            <div className="column productBox">
                                 <div className="box">
                                     <h2 className="title has-text-weight-semibold">Card</h2>
                                     <hr className="dark" />
@@ -51,7 +51,7 @@ const Cart = () => {
                             </div>
                             {
                                 checkout.lineItems.length !== 0 ?
-                                    <div className="column is-3">
+                                    <div className="column is-3 productBox">
                                         <div className="box">
                                             <h2 className="subtitle has-text-weight-semibold is-size-4">Order Summary</h2>
                                             <hr />

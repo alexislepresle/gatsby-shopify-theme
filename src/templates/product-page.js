@@ -7,6 +7,17 @@ import VariantSelectors from "../components/variantSelectors"
 import PropTypes from 'prop-types'
 import Img from "gatsby-image"
 import { Flex, Box } from 'rebass';
+import styled from 'styled-components';
+
+
+const ThumbnailBox = styled(Box)(() => ({
+    transition: '0.5s ease all',
+    cursor: 'pointer',
+}));
+
+const ThumbnailFlex = styled(Flex)(() => ({
+    transition: '0.5s ease all',
+}));
 
 const productPage = ({ data }) => {
     const product = data.shopifyProduct;
@@ -15,9 +26,7 @@ const productPage = ({ data }) => {
     const [currentImage, setCurrentImage] = useState(product.images[0]);
     const context = useContext(StoreContext);
     const productVariant = context.client.product.helpers.variantForOptions(product, variant) || variant;
-    //const [available, setAvailable] = useState(productVariant.availableForSale)
-    const { checkout } = context
-
+    const [available, setAvailable] = useState(productVariant.availableForSale)
 
 
     useEffect(() => {
@@ -38,7 +47,7 @@ const productPage = ({ data }) => {
             const result = product.variants.filter(
                 variant => variant.id === productVariant.shopifyId
             )
-            //setAvailable(result[0].available)
+            setAvailable(result[0].available)
         })
     }
 
@@ -71,7 +80,7 @@ const productPage = ({ data }) => {
         <>
             <SEO title={product.title} />
             <section className="hero is-dark is-fullheight-with-navbar">
-                <div className="hero-body">
+                <div className="hero-body" style={{display:"block"}}>
                     <div className="container">
 
                         <Flex 
@@ -90,22 +99,38 @@ const productPage = ({ data }) => {
                                 <Box
                                     width={1}
                                     aria-hidden
-                                    style={{ maxHeight: 500, overflow: 'auto'}}
+                                    style={{ overflow: 'auto'}}
                                 >
-                                    <div className="allpicture">
+                                          <ThumbnailFlex
+                                                flexDirection={['row', null, 'column']}
+                                            >
+
                                         {product.images.map((x, i) => (
                                             currentImage === product.images[i] ?
-                                                <div key={i} style={{ marginBottom: "10px",border:"3px solid black"  }}>
+                                                <ThumbnailBox 
+                                                    key={i} 
+                                                    style={{ marginBottom: "10px",border:"3px solid black"  }}
+                                                    width={['400px', null, 'auto']}
+                                                    ml={[0, null, 2]}
+                                                    mr={[2, null, 0]}
+                                                    my={1}
+                                                >
                                                     <Img
                                                         fluid={x.localFile.childImageSharp.fluid}
                                                         alt={product.title}
                                                         loading="auto"
                                                         imgStyle={{ WebkitFilter: "blur(1px)", marginBorder: "10px solid black" }}
                                                     />
-                                                </div>
+                                                </ThumbnailBox>
                                                 :
-                                                <div>
-                                                    <div onMouseOver={e => setCurrentImage(product.images[i])} style={{ marginBottom: "10px" }}>
+                                                <ThumbnailBox 
+                                                    onMouseOver={e => setCurrentImage(product.images[i])} style={{ marginBottom: "10px" }}
+                                                    key={i} 
+                                                    width={['400px', null, 'auto']}
+                                                    ml={[0, null, 2]}
+                                                    mr={[2, null, 0]}
+                                                    my={1}
+                                                >
                                                         <Img
                                                             fluid={x.localFile.childImageSharp.fluid}
                                                             loading="auto"
@@ -113,15 +138,15 @@ const productPage = ({ data }) => {
                                                             alt={product.title}
 
                                                         />
-                                                    </div>
-                                                </div>
+                                                </ThumbnailBox>
                                         ))}
-                                    </div>
+                                        </ThumbnailFlex>
 
                                 </Box>
                             </Box>
                             <Box
-                                width={[1, null, 2.5 / 5]}
+                                width={[5/5, null, 3/5]}
+                                style={{margin:"auto"}}
                                 ml="auto"
                                 py={2}
                                 px={[2, null, 3]}
@@ -184,7 +209,7 @@ const productPage = ({ data }) => {
                                     <a
                                         className="button is-link is-medium is-fullwidth"
                                         type="submit"
-                                        //disabled={!available}
+                                        disabled={!available}
                                         onClick={handleAddToCart}
                                     >
                                         Add to Cart
@@ -193,7 +218,7 @@ const productPage = ({ data }) => {
                                         className="button is-dark is-medium is-fullwidth"
                                         style={{ marginTop: "20px" }}
                                         type="submit"
-                                        //disabled={!available}
+                                        disabled={!available}
                                         onClick={handleAddToCart_BuyNow}
                                     >
                                         Buy It Now
