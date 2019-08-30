@@ -2,9 +2,7 @@
 
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
+    <img alt="Gatsby-Shopify-theme" src="/ressources/shopify-gatsby.png" width="250" />
 </p>
 <h1 align="center">
   Gatsby Shopify Theme
