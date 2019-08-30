@@ -16,7 +16,7 @@ This starter also includes credentials to a Shopify demo store so you can try it
 
 If you have questions feel free to message me on [Twitter](https://twitter.com/alexislepresle) or  [Instagram](https://instagram.com/alexislepresle) 🤙🏻
 
-For project : contact@alexislepresle.com or  or  [On my website](https://www.alexislepresle.com/contact/) 🤙🏻
+For project : contact@alexislepresle.com or  [contact me](https://www.alexislepresle.com/contact/) 🤙🏻
 
 ## 🔥 Featured
 
