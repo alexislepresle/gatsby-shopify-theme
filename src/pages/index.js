@@ -68,7 +68,7 @@ const IndexPage = ({ data }) => {
       <section className="hero is-dark">
         <div className="hero-body">
           <div className="container">
-            <div className="columns is-mobile" style={{ marginBottom: "60px", marginLeft: "10px"}}>
+            <div className="columns is-mobile" style={{ marginBottom: "60px", margin:"0", padding:"10px"}}>
               <div className="column is-2-desktop is-6-mobile">
                 <label className="has-text-weight-semibold is-uppercase" style={{ margin: "-20px" }}>SORT BY :
                   <div className="field">
@@ -102,7 +102,7 @@ const IndexPage = ({ data }) => {
                 </label>
               </div>
             </div>
-            <div className="columns is-multiline ">
+            <div className="columns is-multiline" style={{margin:"0"}}>
               {
                 context.filteredType === 'all'
                   ? products
