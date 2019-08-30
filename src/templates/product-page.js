@@ -80,36 +80,36 @@ const productPage = ({ data }) => {
         <>
             <SEO title={product.title} />
             <section className="hero is-dark is-fullheight-with-navbar">
-                <div className="hero-body" style={{display:"block"}}>
+                <div className="hero-body" style={{ display: "block" }}>
                     <div className="container">
 
-                        <Flex 
+                        <Flex
                             className="box"
                             flexDirection={['column', null, 'row']}
                             pt={3}
                             px={4}
                         >
                             <Box
-                                width={[1/2, null, .5/ 5]}
+                                width={[1 / 2, null, .5 / 5]}
                                 py={2}
                                 px={[2, null, 0]}
                                 order={[2, null, 1]}
-                                //flexDirection={['row', null, 'column']}
+                            //flexDirection={['row', null, 'column']}
                             >
                                 <Box
                                     width={1}
                                     aria-hidden
-                                    style={{ overflow: 'auto'}}
+                                    style={{ overflow: 'auto' }}
                                 >
-                                          <ThumbnailFlex
-                                                flexDirection={['row', null, 'column']}
-                                            >
+                                    <ThumbnailFlex
+                                        flexDirection={['row', null, 'column']}
+                                    >
 
                                         {product.images.map((x, i) => (
                                             currentImage === product.images[i] ?
-                                                <ThumbnailBox 
-                                                    key={i} 
-                                                    style={{ marginBottom: "10px",border:"3px solid black"  }}
+                                                <ThumbnailBox
+                                                    key={i}
+                                                    style={{ marginBottom: "10px", border: "3px solid black" }}
                                                     width={['400px', null, 'auto']}
                                                     ml={[0, null, 2]}
                                                     mr={[2, null, 0]}
@@ -123,30 +123,30 @@ const productPage = ({ data }) => {
                                                     />
                                                 </ThumbnailBox>
                                                 :
-                                                <ThumbnailBox 
+                                                <ThumbnailBox
                                                     onMouseOver={e => setCurrentImage(product.images[i])} style={{ marginBottom: "10px" }}
-                                                    key={i} 
+                                                    key={i}
                                                     width={['400px', null, 'auto']}
                                                     ml={[0, null, 2]}
                                                     mr={[2, null, 0]}
                                                     my={1}
                                                 >
-                                                        <Img
-                                                            fluid={x.localFile.childImageSharp.fluid}
-                                                            loading="auto"
-                                                            durationFadeIn={500 * i}
-                                                            alt={product.title}
+                                                    <Img
+                                                        fluid={x.localFile.childImageSharp.fluid}
+                                                        loading="auto"
+                                                        durationFadeIn={500 * i}
+                                                        alt={product.title}
 
-                                                        />
+                                                    />
                                                 </ThumbnailBox>
                                         ))}
-                                        </ThumbnailFlex>
+                                    </ThumbnailFlex>
 
                                 </Box>
                             </Box>
                             <Box
-                                width={[5/5, null, 3/5]}
-                                style={{margin:"auto"}}
+                                width={[5 / 5, null, 3 / 5]}
+                                style={{ margin: "auto" }}
                                 ml="auto"
                                 py={2}
                                 px={[2, null, 3]}
@@ -182,7 +182,7 @@ const productPage = ({ data }) => {
                                     }
                                     <div className="field is-horizontal" style={{ marginTop: "10px" }}>
                                         <div className="field-label is-normal">
-                                            <label className="label" style={{position: "absolute"}}>Quantity :</label>
+                                            <label className="label" style={{ position: "absolute" }}>Quantity :</label>
                                         </div>
                                         <div className="field-body">
                                             <div className="field has-addons">

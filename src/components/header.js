@@ -34,13 +34,13 @@ const Header = ({ siteTitle }) => {
 
   return (
     <>
-      <nav className="navbar" role="navigation" aria-label="main navigation" style={{display: "flex"}}>
-        <div className="navbar-start" style={{ marginLeft: "30px", width:"100%", alignItems: "center", display:"flex"}}>
+      <nav className="navbar" role="navigation" aria-label="main navigation" style={{ display: "flex" }}>
+        <div className="navbar-start" style={{ marginLeft: "30px", width: "100%", alignItems: "center", display: "flex" }}>
           <h1>
             <Link className="has-text-black has-text-weight-bold" to="/">{siteTitle}</Link>
           </h1>
         </div>
-        <div className="navbar-end" style={{ marginRight: "30px", display: "flex"}}>
+        <div className="navbar-end" style={{ marginRight: "30px", display: "flex" }}>
           <div className="navbar-item">
             <p className="has-text-dark is-size-5" onClick={openSearchBar}><i className="fas fa-search"></i></p>
           </div>
@@ -55,7 +55,7 @@ const Header = ({ siteTitle }) => {
             </Link>
           </div>
         </div>
-        
+
       </nav>
       <div className={` ${modal === true ? "modal is-active" : "modal"}`}>
         <div className="modal-background" onClick={closeSearchBar}></div>

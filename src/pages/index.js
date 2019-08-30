@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react' 
+import React, { useContext, useState, useEffect } from 'react'
 import SEO from "../components/seo"
 import { graphql } from "gatsby"
 import StoreContext from '../context/store'
 import ProductBox from "../components/productBox"
-const IndexPage = ({data}) => {
+const IndexPage = ({ data }) => {
   const { edges: products } = data.allShopifyProduct
 
   const context = useContext(StoreContext);
@@ -13,12 +13,12 @@ const IndexPage = ({data}) => {
 
   useEffect(() => {
     context.updateFilterType(type)
-  },[type])
+  }, [type])
 
   useEffect(() => {
     context.updateFilterSort(sort)
     console.log(sort)
-  },[sort])
+  }, [sort])
 
   const sorts = []
 
@@ -62,15 +62,15 @@ const IndexPage = ({data}) => {
   })
   productTypes.sort()
 
-  return(
+  return (
     <>
-    <SEO title="Home" />
+      <SEO title="Home" />
       <section className="hero is-dark">
         <div className="hero-body">
           <div className="container">
-            <div className="columns is-mobile" style={{marginBottom:"60px"}}>
+            <div className="columns is-mobile" style={{ marginBottom: "60px" }}>
               <div className="column is-2-desktop is-6-mobile">
-                <label className="has-text-weight-semibold is-uppercase" style={{margin:"-20px"}}>SORT BY :</label>
+                <label className="has-text-weight-semibold is-uppercase" style={{ margin: "-20px" }}>SORT BY :</label>
                 <div className="field">
                   <div className="control">
                     <div className="select">
@@ -86,10 +86,10 @@ const IndexPage = ({data}) => {
                 </div>
               </div>
               <div className="column is-2-desktop is-6-mobile">
-                <label className="has-text-weight-semibold is-uppercase" style={{margin:"-20px"}}>FILTER BY :</label>
+                <label className="has-text-weight-semibold is-uppercase" style={{ margin: "-20px" }}>FILTER BY :</label>
                 <div className="field">
                   <div className="control">
-                  <div className="select">
+                    <div className="select">
                       <select
                         id="productFilter"
                         defaultvalues={type}
@@ -107,24 +107,24 @@ const IndexPage = ({data}) => {
                 context.filteredType === 'all'
                   ? products
                     .sort(
-                      context.filteredSort === "featured" ? ((a,b) => a.node.createdAt > b.node.createdAt && b.node.priceRange.maxVariantPrice.amount - a.node.priceRange.maxVariantPrice.amount) 
-                      : context.filteredSort === "low" ? ((a, b) => a.node.variants[0].price - b.node.variants[0].price)
-                        : context.filteredSort === "high" ? ((a, b) => b.node.variants[0].price - a.node.variants[0].price)
-                          : context.filteredSort === "Z-A" ? ((a, b) => b.node.title.localeCompare(a.node.title))
-                            : context.filteredSort === "A-Z" ? ((a, b) => a.node.title.localeCompare(b.node.title)) : null
+                      context.filteredSort === "featured" ? ((a, b) => a.node.createdAt > b.node.createdAt && b.node.priceRange.maxVariantPrice.amount - a.node.priceRange.maxVariantPrice.amount)
+                        : context.filteredSort === "low" ? ((a, b) => a.node.variants[0].price - b.node.variants[0].price)
+                          : context.filteredSort === "high" ? ((a, b) => b.node.variants[0].price - a.node.variants[0].price)
+                            : context.filteredSort === "Z-A" ? ((a, b) => b.node.title.localeCompare(a.node.title))
+                              : context.filteredSort === "A-Z" ? ((a, b) => a.node.title.localeCompare(b.node.title)) : null
                     )
                     .map((p, i) => {
-                    let product = p
-                    return (
-                      <div className="column is-3" style={{ marginBottom: "40px" }} key={i}>
-                        <ProductBox product={product} />
-                      </div>
-                    )
-                  })
+                      let product = p
+                      return (
+                        <div className="column is-3" style={{ marginBottom: "40px" }} key={i}>
+                          <ProductBox product={product} />
+                        </div>
+                      )
+                    })
                   : products
                     .filter(p => p.node.productType.includes(context.filteredType))
                     .sort(
-                      context.filteredSort === "featured" ? (a) =>(a) 
+                      context.filteredSort === "featured" ? (a) => (a)
                         : context.filteredSort === "low" ? ((a, b) => a.node.variants[0].price - b.node.variants[0].price)
                           : context.filteredSort === "high" ? ((a, b) => b.node.variants[0].price - a.node.variants[0].price)
                             : context.filteredSort === "Z-A" ? ((a, b) => b.node.title.localeCompare(a.node.title))
@@ -142,7 +142,7 @@ const IndexPage = ({data}) => {
           </div>
         </div>
       </section>
-  </>
+    </>
   )
 }
 
