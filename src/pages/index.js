@@ -75,7 +75,6 @@ const IndexPage = ({ data }) => {
                   <div className="control">
                     <div className="select">
                       <select
-                        id="productSort"
                         defaultvalues={sort}
                         onChange={e => setSort(e.target.value)}
                       >
@@ -91,7 +90,6 @@ const IndexPage = ({ data }) => {
                   <div className="control">
                     <div className="select">
                       <select
-                        id="productFilter"
                         defaultvalues={type}
                         onChange={e => setType(e.target.value)}
                       >

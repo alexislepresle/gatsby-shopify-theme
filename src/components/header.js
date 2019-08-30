@@ -45,12 +45,12 @@ const Header = ({ siteTitle }) => {
             <p className="has-text-dark is-size-5" onClick={openSearchBar}><i className="fas fa-search"></i></p>
           </div>
           <div className="navbar-item">
-            <Link className="has-text-black" to="/cart">
+            <Link to="/cart">
               {
                 quantity > 0 ?
-                  <a className="has-text-dark is-size-5" data-badge="0"><i className="fas fa-shopping-bag" ></i></a>
+                  <i data-badge="0" className="fas fa-shopping-bag has-text-dark is-size-5" ></i>
                   :
-                  <a className="has-text-dark is-size-5"><i className="fas fa-shopping-bag" ></i></a>
+                  <i className="fas fa-shopping-bag is-size-5 has-text-dark"></i>
               }
             </Link>
           </div>
