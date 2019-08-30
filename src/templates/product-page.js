@@ -8,6 +8,8 @@ import PropTypes from 'prop-types'
 import Img from "gatsby-image"
 import { Flex, Box } from 'rebass';
 import styled from 'styled-components';
+import ReactNotification from 'react-notifications-component'
+import { store } from 'react-notifications-component';
 
 
 const ThumbnailBox = styled(Box)(() => ({
@@ -19,6 +21,7 @@ const ThumbnailFlex = styled(Flex)(() => ({
     transition: '0.5s ease all',
 }));
 
+
 const productPage = ({ data }) => {
     const product = data.shopifyProduct;
     const [quantity, setQuantity] = useState(1);
@@ -27,7 +30,7 @@ const productPage = ({ data }) => {
     const context = useContext(StoreContext);
     const productVariant = context.client.product.helpers.variantForOptions(product, variant) || variant;
     const [available, setAvailable] = useState(productVariant.availableForSale)
-
+    const notificationDOMRef = React.createRef();
 
     useEffect(() => {
         let defaultOptionValues = {}
@@ -50,9 +53,24 @@ const productPage = ({ data }) => {
             setAvailable(result[0].available)
         })
     }
+    const addNotification = () => {
+        store.addNotification({
+            title: "Just added to your cart 😊",
+            message: `${product.title} / ${productVariant.title}`,
+            type: "success",
+            insert: "top",
+            container: "bottom-right",
+            animationIn: ["animated", "fadeIn"],
+            animationOut: ["animated", "fadeOut"],
+            dismissable: { click: true },
+            dismiss: { duration: 4000 }
+        }); 
+    }
+    
 
     const handleAddToCart = () => {
         context.addVariantToCart(productVariant.shopifyId, quantity)
+        addNotification()
     }
 
     const handleAddToCart_BuyNow = () => {
@@ -79,6 +97,7 @@ const productPage = ({ data }) => {
     return (
         <>
             <SEO title={product.title} />
+            <ReactNotification ref={notificationDOMRef} />
             <section className="hero is-dark is-fullheight-with-navbar">
                 <div className="hero-body" style={{ display: "block" }}>
                     <div className="container">
