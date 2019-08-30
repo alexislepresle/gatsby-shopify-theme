@@ -37,7 +37,7 @@ const Header = ({ siteTitle }) => {
       <nav className="navbar" role="navigation" aria-label="main navigation" style={{ display: "flex" }}>
         <div className="navbar-start" style={{ marginLeft: "30px", width: "100%", alignItems: "center", display: "flex" }}>
           <h1>
-            <Link className="has-text-black has-text-weight-bold" to="/">{siteTitle}</Link>
+            <Link aria-label="search" className="has-text-black has-text-weight-bold" to="/">{siteTitle}</Link>
           </h1>
         </div>
         <div className="navbar-end" style={{ marginRight: "30px", display: "flex" }}>
@@ -45,7 +45,7 @@ const Header = ({ siteTitle }) => {
             <p className="has-text-dark is-size-5" onClick={openSearchBar}><i className="fas fa-search"></i></p>
           </div>
           <div className="navbar-item">
-            <Link to="/cart">
+            <Link aria-label="cart" to="/cart">
               {
                 quantity > 0 ?
                   <i data-badge="0" className="fas fa-shopping-bag has-text-dark is-size-5" ></i>
