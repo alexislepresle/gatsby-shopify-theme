@@ -62,7 +62,7 @@ const Header = ({ siteTitle }) => {
         <div className="modal-content">
           <div className="field">
             <div className="control has-icons-right">
-              <form action="search" method="GET">
+              <form action="../search" method="GET">
                 <input className="input is-large" name="value" type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search" />
                 <span className="icon is-right">
                   <i className="fas fa-search"></i>
