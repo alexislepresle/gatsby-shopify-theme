@@ -1,7 +1,7 @@
 {
   "name": "gatsby-shopify-theme",
   "description": "🛒 Simple theme to build a blazing simple and fast store with Gatsby and Shopify.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Alexis Lepresle <contact@alexislepresle.com>",
   "dependencies": {
     "bulma": "^0.7.5",
