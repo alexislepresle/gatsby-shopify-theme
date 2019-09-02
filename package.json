@@ -1,7 +1,7 @@
 {
   "name": "gatsby-shopify-theme",
   "description": "🛒 Simple theme to build a blazing simple and fast store with Gatsby and Shopify.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Alexis Lepresle <contact@alexislepresle.com>",
   "dependencies": {
     "bulma": "^0.7.5",
@@ -49,11 +49,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-default.git"
+    "url": "git+https://github.com/alexislepresle/gatsby-shopify-theme.git"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/alexislepresle/gatsby-shopify-theme/issues"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-default#readme",
+  "homepage": "https://github.com/alexislepresle/gatsby-shopify-theme#readme",
   "main": "gatsby-browser.js"
 }
