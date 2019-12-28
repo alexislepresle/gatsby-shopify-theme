@@ -2,7 +2,7 @@
 
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
-    <img alt="Gatsby-Shopify-theme" src="https://github.com/alexislepresle/gatsby-shopify-theme/raw/master/ressources/shopify-gatsby.png" width="250" />
+    <img alt="Gatsby-Shopify-theme" src="https://github.com/alexislepresle/gatsby-shopify-theme/raw/master/resources/shopify-gatsby.png" width="250" />
 </p>
 <h1 align="center">
   Gatsby Shopify Theme
