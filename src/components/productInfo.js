@@ -1,6 +1,6 @@
 import React from 'react';
 
-const productInfo = ({ product }) => {
+const ProductInfo = ({ product }) => {
     return (
         <>
             <hr />
@@ -11,4 +11,4 @@ const productInfo = ({ product }) => {
     );
 };
 
-export default productInfo;
+export default ProductInfo;

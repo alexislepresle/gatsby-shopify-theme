@@ -2,7 +2,7 @@ import React , { useContext, useState, useEffect }from 'react';
 import StoreContext from '../context/store'
 import ProductBox from "./productBox"
 
-const productList = ({data}) => {
+const ProductList = ({data}) => {
     const { edges: products } = data.allShopifyProduct
 
   const context = useContext(StoreContext);
@@ -142,4 +142,4 @@ const productList = ({data}) => {
 };
 
 
-export default productList;
+export default ProductList;

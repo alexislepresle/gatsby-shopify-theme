@@ -2,7 +2,7 @@ import React from 'react';
 import Img from "gatsby-image"
 import { Link } from "gatsby" /* eslint-disable */
 
-const productBox = props => {
+const ProductBox = props => {
     const product = props.product
     return (
 
@@ -27,4 +27,4 @@ const productBox = props => {
     );
 };
 
-export default productBox;
+export default ProductBox;
