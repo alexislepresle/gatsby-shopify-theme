@@ -13,10 +13,28 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-layout`,
     {
+      resolve: `gatsby-plugin-apollo-shopify`,
+      options: {
+        shopName: process.env.SHOP_NAME,
+        accessToken: process.env.SHOPIFY_ACCESS_TOKEN,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+        {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: 'Shopify',
+        fieldName: 'shopify',
+        url: `https://${process.env.SHOP_NAME}.myshopify.com/api/graphql`,
+        headers: {
+          'X-Shopify-Storefront-Access-Token': process.env.SHOPIFY_ACCESS_TOKEN,
+        },
       },
     },
     {

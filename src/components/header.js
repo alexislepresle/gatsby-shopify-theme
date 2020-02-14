@@ -2,6 +2,8 @@ import { Link } from "gatsby" /* eslint-disable */
 import PropTypes from "prop-types"
 import React, { useContext, useState, useEffect } from 'react'
 import StoreContext from '../context/store'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingBag, faUser, faSearch } from '@fortawesome/free-solid-svg-icons'
 
 const countQuantity = lineItems => {
   let quantity = 0
@@ -45,12 +47,17 @@ const Header = ({ siteTitle }) => {
             <p className="has-text-dark is-size-5" onClick={openSearchBar}><i className="fas fa-search"></i></p>
           </div>
           <div className="navbar-item">
+            <Link aria-label="cart" to="/account">
+              <FontAwesomeIcon icon={faUser} className="is-size-5 has-text-dark" />
+            </Link>
+          </div>
+          <div className="navbar-item">
             <Link aria-label="cart" to="/cart">
               {
                 quantity > 0 ?
                   <i data-badge="0" className="fas fa-shopping-bag has-text-dark is-size-5" ></i>
                   :
-                  <i className="fas fa-shopping-bag is-size-5 has-text-dark"></i>
+                  <FontAwesomeIcon icon={faShoppingBag} className="is-size-5 has-text-dark" />
               }
             </Link>
           </div>
@@ -65,7 +72,7 @@ const Header = ({ siteTitle }) => {
               <form action="../search" method="GET">
                 <input className="input is-large" name="value" type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search" />
                 <span className="icon is-right">
-                  <i className="fas fa-search"></i>
+                  <FontAwesomeIcon icon={faSearch} />
                 </span>
                 <label className="has-text-white">ENTER ↵</label>
               </form>

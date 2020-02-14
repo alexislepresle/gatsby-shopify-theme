@@ -66,13 +66,14 @@ const ProductList = ({data}) => {
           <div className="container">
             <div className="columns is-mobile" style={{ marginBottom: "60px", margin:"0", padding:"10px"}}>
               <div className="column is-2-desktop is-6-mobile">
-                <label className="has-text-weight-semibold is-uppercase" style={{ margin: "-20px" }}>SORT BY :
+                <label htmlFor="sortBy" className="has-text-weight-semibold is-uppercase" style={{ margin: "-20px" }}>SORT BY :
                   <div className="field">
                     <div className="control">
                       <div className="select">
                         <select
                           defaultvalues={sort}
                           onChange={e => setSort(e.target.value)}
+                          id="sortBy"
                         >
                           {sorts}
                         </select>
@@ -82,13 +83,14 @@ const ProductList = ({data}) => {
                 </label>
               </div>
               <div className="column is-2-desktop is-6-mobile">
-                <label className="has-text-weight-semibold is-uppercase" style={{ margin: "-20px" }}>FILTER BY :
+                <label htmlFor="filter" className="has-text-weight-semibold is-uppercase" style={{ margin: "-20px" }}>FILTER BY :
                   <div className="field">
                     <div className="control">
                       <div className="select">
                         <select
                           defaultvalues={type}
                           onChange={e => setType(e.target.value)}
+                          id="filter"
                         >
                           {types}
                         </select>
