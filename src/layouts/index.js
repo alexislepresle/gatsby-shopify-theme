@@ -5,10 +5,15 @@ import StoreContext, { defaultStoreContext } from '../context/store'
 import Header from "../components/header"
 import "../components/all.sass"
 import { navigate } from "@reach/router"
+
+const isBrowser = typeof window !== 'undefined'
+
 class Layout extends Component {
+    
     state = {
         store: {
-            customerAccessToken : JSON.parse(localStorage.getItem('customerAccessToken')),
+            
+            customerAccessToken : isBrowser && JSON.parse(localStorage.getItem('customerAccessToken')),
             ...defaultStoreContext,
             addVariantToCart: (variantId, quantity) => {
 
@@ -107,7 +112,7 @@ class Layout extends Component {
                 }))
             },
             set:value =>{
-                localStorage.setItem('customerAccessToken', JSON.stringify(value))
+                isBrowser && localStorage.setItem('customerAccessToken', JSON.stringify(value))
                 this.setState(state => ({
                     store: {
                         ...state.store,
