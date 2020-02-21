@@ -34,6 +34,7 @@
     "gatsby-transformer-sharp": "^2.3.14",
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.3",
+    "local-storage": "^2.0.0",
     "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",

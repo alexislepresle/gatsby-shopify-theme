@@ -47,7 +47,7 @@ const Header = ({ siteTitle }) => {
             <p className="has-text-dark is-size-5" onClick={openSearchBar}><i className="fas fa-search"></i></p>
           </div>
           <div className="navbar-item">
-            <Link aria-label="cart" to="/account">
+            <Link aria-label="cart" to="/account/">
               <FontAwesomeIcon icon={faUser} className="is-size-5 has-text-dark" />
             </Link>
           </div>

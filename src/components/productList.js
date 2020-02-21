@@ -16,7 +16,6 @@ const ProductList = ({data}) => {
 
   useEffect(() => {
     context.updateFilterSort(sort)
-    console.log(sort)
   }, [sort])
 
   const sorts = []

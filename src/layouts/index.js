@@ -8,6 +8,7 @@ import { navigate } from "@reach/router"
 class Layout extends Component {
     state = {
         store: {
+            customerAccessToken : JSON.parse(localStorage.getItem('customerAccessToken')),
             ...defaultStoreContext,
             addVariantToCart: (variantId, quantity) => {
 
@@ -104,6 +105,15 @@ class Layout extends Component {
                         filteredSort: sort,
                     },
                 }))
+            },
+            set:value =>{
+                localStorage.setItem('customerAccessToken', JSON.stringify(value))
+                this.setState(state => ({
+                    store: {
+                        ...state.store,
+                        customerAccessToken: value,
+                    },
+                }))
             }
         }
     }
@@ -117,7 +127,7 @@ class Layout extends Component {
 
         const setCheckoutInState = checkout => {
             if (isBrowser) {
-                localStorage.setItem('shopify_checkout_id', checkout.id)
+                localStorage.setItem('shopify_checkout_id', JSON.stringify(checkout.id))
             }
 
             this.setState(state => ({

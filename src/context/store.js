@@ -14,6 +14,8 @@ export const defaultStoreContext = {
   shop: {},
   filteredType: 'all',
   filteredSort: 'featured',
+  customerAccessToken: null,
+  setValue: () => { },
   addVariantToCart: () => { },
   addVariantToCartAndBuyNow: () => { },
   removeLineItem: () => { },
