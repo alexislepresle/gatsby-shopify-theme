@@ -6,6 +6,7 @@ const preferDefault = m => m && m.default || m
 
 exports.components = {
   "component---src-templates-product-page-js": hot(preferDefault(require("/Users/alex/Documents/freelance/Gatsby_Ecommerce/src/templates/product-page.js"))),
+  "component---cache-dev-404-page-js": hot(preferDefault(require("/Users/alex/Documents/freelance/Gatsby_Ecommerce/.cache/dev-404-page.js"))),
   "component---src-pages-404-js": hot(preferDefault(require("/Users/alex/Documents/freelance/Gatsby_Ecommerce/src/pages/404.js"))),
   "component---src-pages-account-addresses-js": hot(preferDefault(require("/Users/alex/Documents/freelance/Gatsby_Ecommerce/src/pages/account/addresses.js"))),
   "component---src-pages-account-index-js": hot(preferDefault(require("/Users/alex/Documents/freelance/Gatsby_Ecommerce/src/pages/account/index.js"))),

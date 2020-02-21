@@ -7,20 +7,22 @@ import ConnexionLayout from "../../components/account/ConnexionLayout"
 
 const CUSTOMER_LOGIN = gql`
 mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
-    customerAccessTokenCreate(input: $input) {
-        customerAccessToken {
-            accessToken
-            expiresAt
-        }
-        customerUserErrors {
-            field
-            message
-        }
+  customerAccessTokenCreate(input: $input) {
+    customerAccessToken {
+      accessToken
+      expiresAt
     }
+    customerUserErrors {
+      code
+      field
+      message
+    }
+  }
 }
+
 `
 
-const LoginForm = () => {
+const LoginForm = ({ data }) => {
   const { setValue } = useContext(StoreContext);
 
   const [email, setEmail] = useState(null);
@@ -39,24 +41,8 @@ const LoginForm = () => {
               <Mutation mutation={CUSTOMER_LOGIN}>
                 {(customerLogin) => {
                   return (
-                    <form
-                      onSubmit={ () => {
-                      customerLogin({
-                        variables: {
-                          input: {
-                            "email": email,
-                            "password": password,
-                          }
-                        }
-                      })
-                      .then((result) => {
-                          alert("herevalue" + JSON.stringify(result.data.customerAccessTokenCreate.customerAccessToken))
-                          localStorage.setItem('customerAccessToken', JSON.stringify(result.data.customerAccessTokenCreate.customerAccessToken))
-                          handleCustomerAccessToken(result.data.customerAccessTokenCreate.customerAccessToken)
-                        }, (err) => {
-                          alert("herevalue" + err)
-                        }
-                      )}}>
+                    <>
+
                       <div className="field">
                         <label className="label has-text-white" htmlFor="loginEmail">Email</label>
                         <div className="control">
@@ -78,7 +64,20 @@ const LoginForm = () => {
                         <div className="control has-text-centered">
                           <button
                             className="button"
-                            type="submit"
+                            onClick={() => {
+                              customerLogin({
+                                variables: {
+                                  "input": {
+                                    "email": email,
+                                    "password": password,
+                                  }
+                                }
+                              }).then((result) => {
+                                handleCustomerAccessToken(result.data.customerAccessTokenCreate.customerAccessToken)
+                              }).catch((err) => {
+                                alert(err)
+                              })
+                            }}
                           >SIGN IN</button>
                         </div>
                       </div>
@@ -87,7 +86,7 @@ const LoginForm = () => {
                           <p>Create account</p>
                         </div>
                       </div>
-                    </form>
+                    </>
                   )
                 }}
               </Mutation>
@@ -105,7 +104,7 @@ const Login = () => {
   return (
     <>
       <SEO title="Login" />
-      <ConnexionLayout>
+      <ConnexionLayout log={false}>
         <LoginForm />
       </ConnexionLayout>
     </>

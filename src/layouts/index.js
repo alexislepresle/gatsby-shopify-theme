@@ -12,9 +12,8 @@ class Layout extends Component {
     
     state = {
         store: {
-            
-            customerAccessToken : isBrowser && JSON.parse(localStorage.getItem('customerAccessToken')),
             ...defaultStoreContext,
+            customerAccessToken : isBrowser && JSON.parse(localStorage.getItem('customerAccessToken')),
             addVariantToCart: (variantId, quantity) => {
 
                 this.setState(state => ({
@@ -111,7 +110,7 @@ class Layout extends Component {
                     },
                 }))
             },
-            set:value =>{
+            setValue:value =>{
                 isBrowser && localStorage.setItem('customerAccessToken', JSON.stringify(value))
                 this.setState(state => ({
                     store: {

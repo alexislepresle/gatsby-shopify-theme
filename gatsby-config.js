@@ -42,6 +42,17 @@ module.exports = {
         includeCollections: ["shop", "content"],
       },
     },
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: 'Shopify',
+        fieldName: 'shopify',
+        url: `https://${process.env.SHOP_NAME}.myshopify.com/api/graphql`,
+        headers: {
+          'X-Shopify-Storefront-Access-Token': process.env.SHOPIFY_ACCESS_TOKEN,
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

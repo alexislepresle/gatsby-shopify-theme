@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
-import AuthenticationVerification from "./AuthenticationVerification"
+import React,{useContext} from 'react';
 import { navigate } from 'gatsby'
+import StoreContext from "../../context/store"
 
 
-class ConnexionLayout extends Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (
-            <AuthenticationVerification props={this.props}>
-                {({ isAuthenticated }) => (
-                    (isAuthenticated)
-                        ? (typeof window !== 'undefined') ? navigate(`/account`) : null
-                        : this.props.children
-                )}
-            </AuthenticationVerification>
-        );
-    }
-}
+const ConnexionLayout = (props, log) => {
+    const { customerAccessToken } = useContext(StoreContext);
+    const isAuthenticated = customerAccessToken && customerAccessToken.expiresAt && customerAccessToken.expiresAt > new Date().toISOString() ? true : false
+
+    return (
+        <>
+        {
+            (isAuthenticated)
+                ? (typeof window !== 'undefined') ? navigate(`/account`) : null
+                : props.children
+        }
+    </>
+    );
+};
 
 export default ConnexionLayout;

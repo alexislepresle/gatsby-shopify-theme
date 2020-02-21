@@ -3,7 +3,7 @@ import Layout from "../../components/account/Layout"
 const index = () => {
     return(
         <Layout>
-            <p>coucou</p>
+            <p>My Account</p>
         </Layout>
     );
 };
