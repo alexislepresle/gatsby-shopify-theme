@@ -28,7 +28,7 @@
     "gatsby-plugin-shopify-buy": "0.0.2",
     "gatsby-remark-images-zoom": "^1.1.0",
     "gatsby-source-filesystem": "^2.1.48",
-    "gatsby-source-graphql": "^2.1.33",
+    "gatsby-source-graphql": "^2.1.28",
     "gatsby-source-shopify": "^3.0.43",
     "gatsby-source-shopify2": "^2.0.7",
     "gatsby-transformer-sharp": "^2.3.14",
