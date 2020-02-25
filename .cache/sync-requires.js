@@ -15,6 +15,7 @@ exports.components = {
   "component---src-pages-account-register-js": hot(preferDefault(require("/Users/alex/Documents/freelance/Gatsby_Ecommerce/src/pages/account/register.js"))),
   "component---src-pages-cart-js": hot(preferDefault(require("/Users/alex/Documents/freelance/Gatsby_Ecommerce/src/pages/cart.js"))),
   "component---src-pages-index-js": hot(preferDefault(require("/Users/alex/Documents/freelance/Gatsby_Ecommerce/src/pages/index.js"))),
-  "component---src-pages-search-js": hot(preferDefault(require("/Users/alex/Documents/freelance/Gatsby_Ecommerce/src/pages/search.js")))
+  "component---src-pages-search-js": hot(preferDefault(require("/Users/alex/Documents/freelance/Gatsby_Ecommerce/src/pages/search.js"))),
+  "component---src-pages-account-order-js": hot(preferDefault(require("/Users/alex/Documents/freelance/Gatsby_Ecommerce/src/pages/account/order.js")))
 }
 

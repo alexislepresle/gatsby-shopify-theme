@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo'
 import StoreContext from '../../context/store'
 import ConnexionLayout from "../../components/account/ConnexionLayout"
+import { Link } from 'gatsby'
 
 const CUSTOMER_LOGIN = gql`
 mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
@@ -19,7 +20,6 @@ mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
     }
   }
 }
-
 `
 
 const LoginForm = ({ data }) => {
@@ -83,7 +83,9 @@ const LoginForm = ({ data }) => {
                       </div>
                       <div className="field">
                         <div className="control has-text-centered">
-                          <p>Create account</p>
+                          <Link to="account/register">
+                            <p className="has-text-white">Create account</p>
+                          </Link>
                         </div>
                       </div>
                     </>

@@ -44,7 +44,7 @@ const Header = ({ siteTitle }) => {
         </div>
         <div className="navbar-end" style={{ marginRight: "30px", display: "flex" }}>
           <div className="navbar-item">
-            <p className="has-text-dark is-size-5" onClick={openSearchBar}><i className="fas fa-search"></i></p>
+            <FontAwesomeIcon className="has-text-dark is-size-5" onClick={openSearchBar} icon={faSearch} />
           </div>
           <div className="navbar-item">
             <Link aria-label="cart" to="/account/">
