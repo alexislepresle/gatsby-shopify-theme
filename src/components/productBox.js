@@ -14,14 +14,9 @@ const ProductBox = props => {
                     alt={product.node.title}
                 />
                 <p className="has-text-weight-semibold has-text-black">{product.node.title}</p>
-                <div className="columns">
-                    <div className="column has-text-left is-uppercase has-text-black">
-                        {product.node.variants[0].title}
-                    </div>
-                    <div className="column has-text-right has-text-weight-bold is-size-5 has-text-black">
-                        ${product.node.variants[0].price}
-                    </div>
-                </div>
+                <p className="has-text-weight-light has-text-grey">
+                    ${product.node.variants[0].price}
+                </p>
             </Link>
         </div>
     );
