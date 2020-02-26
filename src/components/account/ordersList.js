@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Order from './Order';
+import Order from './order';
 
 const OrdersList = ({ orders }) => {
     const [selectedOrder, setSelectedOrder] = useState([]);
