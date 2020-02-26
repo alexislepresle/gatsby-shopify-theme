@@ -4,7 +4,9 @@ import gql from 'graphql-tag'
 import StoreContext from '../../context/store'
 import Layout from "../../components/account/Layout"
 import Logout from "./logout"
-import { Link } from "gatsby"
+import OrdersList from "../../components/account/OrdersList"
+import DefaultAddress from "../../components/account/DefaultAddress"
+
 
 const CUSTOMER_INFO = gql`
 query($customerAccessToken: String!) {
@@ -28,6 +30,24 @@ query($customerAccessToken: String!) {
                     processedAt
                     statusUrl
                     currencyCode
+                    lineItems(first: 10) {
+                        edges {
+                            node {
+                                title
+                                quantity
+                            }
+                        }
+                    }
+                    shippingAddress {
+                        address1
+                        city
+                        lastName
+                        firstName
+                        zip
+                        country
+                    }
+                    subtotalPrice
+                    totalPrice
                 }
             }
         }
@@ -65,67 +85,16 @@ const Index = () => {
                         <>
                             <h1 className="title has-text-centered">My Account</h1>
                             <Logout />
-                            <section class="hero is-medium">
-                                <div class="hero-body">
-                                    <div class="container">
+                            <section className="hero is-medium">
+                                <div className="hero-body">
+                                    <div className="container">
                                         <div className="container">
                                             <div className="columns is-centered">
-                                                <div className="column has-text-centered is-9">
-                                                    <h3 className="subtitle has-text-centered has-text-weight-semibold">ORDER HISTORY</h3>
-                                                    {
-                                                        orders.edges.length == 0 ? (
-                                                            <p className="has-text-grey">You haven't placed any orders yet.</p>
-                                                        )
-                                                            :
-                                                            (
-                                                                <table class="table is-bordered" style={{margin: "auto"}}>
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Order</th>
-                                                                            <th>Date</th>
-                                                                            <th>Payment Status</th>
-                                                                            <th>Fulfillment Status</th>
-                                                                            <th>Total</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        {
-                                                                            orders.edges.map(order => 
-                                                                                <tr>
-                                                                                    <td><a className="button is-dark">{order.node.name}</a></td>
-                                                                                    <td>{new Date(order.node.processedAt).toLocaleDateString()}</td>
-                                                                                    <td></td>
-                                                                                    <td></td>
-                                                                                    <td>{order.node.currencyCode} {order.node.totalPrice}</td>
-                                                                                </tr>
-                                                                            )
-                                                                        }
-                                                                    </tbody>
-                                                                </table>
-                                                            )
-                                                    }
-                                                </div>
-                                                <div className="column has-text-centered">
-                                                    <h3 className="subtitle has-text-centered has-text-weight-semibold">ACCOUNT DETAILS</h3>
-                                                    {
-                                                        defaultAddress != null && (
-                                                            <div className="has-text-left">
-                                                                <p className="has-text-grey">{defaultAddress.firstName} {defaultAddress.lastName}</p>
-                                                                <p className="has-text-grey">{defaultAddress.address1}</p>
-                                                                <p className="has-text-grey">{defaultAddress.zip}, {defaultAddress.city}</p>
-                                                                <p className="has-text-grey">{defaultAddress.country}</p>
-                                                            </div>
-                                                        )
-                                                    }
-                                                    <br />
-                                                    <Link to="account/addresses">
-                                                        <button 
-                                                            className="button is-dark"
-                                                        >
-                                                            View Addresses ({addresses.edges.length})
-                                                        </button>
-                                                    </Link>
-                                                </div>
+                                                <OrdersList orders={orders} />
+                                                <DefaultAddress 
+                                                    defaultAddress={defaultAddress} 
+                                                    addressesSize={addresses.edges.length}
+                                                />
                                             </div>
                                         </div>
                                     </div>

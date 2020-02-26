@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import StoreContext from '../../../context/store'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
-import { navigate } from 'gatsby'
 
 const CUSTOMER_DELETE_ADDRESS = gql`
 mutation customerAddressDelete($id: ID!, $customerAccessToken: String!) {

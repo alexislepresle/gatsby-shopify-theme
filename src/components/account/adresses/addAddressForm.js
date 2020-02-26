@@ -59,7 +59,7 @@ const AddAddressForm = () => {
                                     <div className="columns">
                                         <div className="column">
                                             <div className="field">
-                                                <label className="label">First Name</label>
+                                                <label className="label" htmlFor="firstNameInput">First Name</label>
                                                 <div className="control">
                                                     <input className="input" value={firstNameInput} type="text" onChange={(e) => setFirstNameInput(e.target.value)} />
                                                 </div>
@@ -67,7 +67,7 @@ const AddAddressForm = () => {
                                         </div>
                                         <div className="column">
                                             <div className="field">
-                                                <label className="label">Last Name</label>
+                                                <label className="label" htmlFor="lastNameInput">Last Name</label>
                                                 <div className="control">
                                                     <input className="input" value={lastNameInput} type="text" onChange={(e) => setLastNameInput(e.target.value)} />
                                                 </div>
@@ -75,19 +75,19 @@ const AddAddressForm = () => {
                                         </div>
                                     </div>
                                     <div className="field">
-                                        <label className="label">Company</label>
+                                        <label className="label"  htmlFor="companyInput">Company</label>
                                         <div className="control">
                                             <input className="input" value={companyInput} type="text" onChange={(e) => setCompanyInput(e.target.value)} />
                                         </div>
                                     </div>
                                     <div className="field">
-                                        <label className="label">Address</label>
+                                        <label className="label"  htmlFor="addressInput">Address</label>
                                         <div className="control">
                                             <input className="input" value={addressInput} type="text" onChange={(e) => setAddressInput(e.target.value)} />
                                         </div>
                                     </div>
                                     <div className="field">
-                                        <label className="label">Apartment, suite, etc.</label>
+                                        <label className="label"  htmlFor="apartmentInput">Apartment, suite, etc.</label>
                                         <div className="control">
                                             <input className="input" value={apartmentInput} type="text" onChange={(e) => setApartmentInput(e.target.value)} />
                                         </div>
@@ -95,15 +95,15 @@ const AddAddressForm = () => {
                                     <div className="columns">
                                         <div className="column">
                                             <div className="field">
-                                                <label className="label">City</label>
+                                                <label className="label"  htmlFor="cityInput">City</label>
                                                 <div className="control">
                                                     <input className="input" value={cityInput} type="text" onChange={(e) => setCityInput(e.target.value)} />
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="column">
-                                            <div className="field">
-                                                <label className="label">Country</label>
+                                            <div className="field" >
+                                                <label className="label"  htmlFor="countryInput">Country</label>
                                                 <div className="control">
                                                     <div className="select">
                                                         <select value={countryInput} onChange={(e) => setCountryInput(e.target.value)} style={{minWidth: "140px",maxWidth: "310px"}}>
@@ -119,20 +119,20 @@ const AddAddressForm = () => {
                                         </div>
                                     </div>
                                     <div className="field">
-                                        <label className="label">Postal/Zip Code</label>
+                                        <label className="label"  htmlFor="zipInput">Postal/Zip Code</label>
                                         <div className="control">
                                             <input className="input" value={zipInput} type="text" onChange={(e) => setZipInput(e.target.value)} />
                                         </div>
                                     </div>
                                     <div className="field">
-                                        <label className="label">Phone</label>
+                                        <label className="label"  htmlFor="phoneInput">Phone</label>
                                         <div className="control">
                                             <input className="input" value={phoneInput} type="text" onChange={(e) => setPhoneInput(e.target.value)} />
                                         </div>
                                     </div>
                                     <div className="field">
                                         <div className="control">
-                                            <label className="checkbox">
+                                            <label className="checkbox"  htmlFor="checkboxDefaultAddress">
                                                 <input type="checkbox" />
                                                 Set as default address
                                         </label>

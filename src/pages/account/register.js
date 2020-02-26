@@ -1,8 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import SEO from "../../components/seo"
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo'
-import StoreContext from '../../context/store'
 import ConnexionLayout from "../../components/account/ConnexionLayout"
 import { navigate } from 'gatsby'
 
@@ -21,14 +20,10 @@ mutation customerCreate($input: CustomerCreateInput!) {
 }
 `
 
-const RegisterForm = ({ data }) => {
-  const { setValue } = useContext(StoreContext);
+const RegisterForm = () => {
 
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const handleCustomerAccessToken = (value) => {
-    setValue(value)
-  }
 
   return (
     <section className="hero is-dark is-fullheight-with-navbar">

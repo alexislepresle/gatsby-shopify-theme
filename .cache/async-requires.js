@@ -12,7 +12,6 @@ exports.components = {
   "component---src-pages-account-register-js": () => import("./../src/pages/account/register.js" /* webpackChunkName: "component---src-pages-account-register-js" */),
   "component---src-pages-cart-js": () => import("./../src/pages/cart.js" /* webpackChunkName: "component---src-pages-cart-js" */),
   "component---src-pages-index-js": () => import("./../src/pages/index.js" /* webpackChunkName: "component---src-pages-index-js" */),
-  "component---src-pages-search-js": () => import("./../src/pages/search.js" /* webpackChunkName: "component---src-pages-search-js" */),
-  "component---src-pages-account-order-js": () => import("./../src/pages/account/order.js" /* webpackChunkName: "component---src-pages-account-order-js" */)
+  "component---src-pages-search-js": () => import("./../src/pages/search.js" /* webpackChunkName: "component---src-pages-search-js" */)
 }
 

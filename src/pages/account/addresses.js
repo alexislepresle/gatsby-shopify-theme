@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link } from "gatsby"
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -63,7 +63,7 @@ const Addresses = () => {
                                                 <div className="column">
                                                     <br/>
                                                     {
-                                                        defaultAddress.id == address.node.id && 
+                                                        defaultAddress.id === address.node.id && 
                                                             <h1 className="subtitle">DEFAULT</h1>                                                
                                                     }
                                                     <p className="has-text-grey">{address.node.firstName} {address.node.lastName}</p>
