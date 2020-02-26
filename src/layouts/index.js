@@ -9,11 +9,18 @@ import { navigate } from "@reach/router"
 const isBrowser = typeof window !== 'undefined'
 
 class Layout extends Component {
+    getlocalStorage(value) {
+        try {
+            return JSON.parse(localStorage.getItem(value))
+        } catch(e) {
+            return ''
+        }
+    }
     
     state = {
         store: {
             ...defaultStoreContext,
-            customerAccessToken : isBrowser && JSON.parse(localStorage.getItem('customerAccessToken')),
+            customerAccessToken : this.getlocalStorage('customerAccessToken'),
             addVariantToCart: (variantId, quantity) => {
 
                 this.setState(state => ({
