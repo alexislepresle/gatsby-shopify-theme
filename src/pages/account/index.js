@@ -4,8 +4,8 @@ import gql from 'graphql-tag'
 import StoreContext from '../../context/store'
 import Layout from "../../components/account/Layout"
 import Logout from "./logout"
-import OrdersList from "../../components/account/OrdersList"
-import DefaultAddress from "../../components/account/DefaultAddress"
+import OrdersList from "../../components/account/ordersList"
+import DefaultAddress from "../../components/account/defaultAddress"
 
 
 const CUSTOMER_INFO = gql`
