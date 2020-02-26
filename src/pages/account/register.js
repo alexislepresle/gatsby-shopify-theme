@@ -31,7 +31,7 @@ const RegisterForm = () => {
         <div className="container">
           <div className="columns is-centered">
             <div className="column is-4 is-centered">
-              <h2 className=" title has-text-centered">Login</h2>
+              <h2 className=" title has-text-centered">Create</h2>
               <Mutation mutation={CUSTOMER_REGISTER}>
                 {(customerLogin) => {
                   return (
