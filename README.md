@@ -28,7 +28,13 @@ For project : contact@alexislepresle.com or  [contact me](https://www.alexislepr
 - Search Bar
 - Google Analytics
 - SEO
-
+- Customer account from Shopify Store
+    - Create customer account
+    - Reset Password
+    - See all orders
+    - Order detail
+    - See all addresses (Can Create, Update, Delete and choose default address)
+    
 ## 🚀 Quick start
 
 1.  **Create a Gatsby Shop site.**
