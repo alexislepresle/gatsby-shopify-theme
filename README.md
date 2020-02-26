@@ -30,6 +30,7 @@ For project : contact@alexislepresle.com or  [contact me](https://www.alexislepr
 - SEO
 - Customer account from Shopify Store
     - Create customer account
+    - Log in customer account
     - Reset Password
     - See all orders
     - Order detail
