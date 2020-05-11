@@ -53,6 +53,7 @@ For project : contact@alexislepresle.com or  [contact me](https://www.alexislepr
 
     ```sh
     cd shop-gatsby-shopify/
+    npm i
     gatsby develop
     ```
 
