@@ -3,9 +3,9 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from 'gatsby'
 import StoreContext, { defaultStoreContext } from '../context/store'
 import Header from "../components/header"
+import Footer from "../components/footer"
 import "../components/all.sass"
 import { navigate } from "@reach/router"
-
 const isBrowser = typeof window !== 'undefined'
 
 class Layout extends Component {
@@ -179,7 +179,6 @@ class Layout extends Component {
 
         return (
             <StoreContext.Provider value={this.state.store}>
-
                 <StaticQuery
                     query={graphql`
                         query SiteTitleQuery {
@@ -193,15 +192,8 @@ class Layout extends Component {
                     render={data => (
                         <>
                             <Header siteTitle={data.site.siteMetadata.title} />
-
-                            {children}
-                            <footer className="footer">
-                                <div className="content has-text-centered">
-                                    <p><strong>Gatsby x Shopify</strong> by <a className="has-text-danger" href="https://www.alexislepresle.com" target="_blank" rel="noopener noreferrer">Alexis Lepresle</a> (Fake store with <a className="has-text-danger"  target="_blank" rel="noopener noreferrer" href="https://www.shop.dev.to">Dev.to</a> products)</p>
-                                        <a className="button is-dark" style={{marginRight:"10px"}} target="_blank" rel="noopener noreferrer" href="https://github.com/alexislepresle/Gatsby-E-commerce-course">Github</a>
-                                        <a className="button is-dark" target="_blank" rel="noopener noreferrer" href="https://school.alexislepresle.com/courses/build-an-ecommerce-website-with-gatsby-js-1/">Online Course</a>
-                                </div>
-                            </footer>
+                                {children}
+                            <Footer />
                         </>
                     )}
                 />
