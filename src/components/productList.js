@@ -1,6 +1,6 @@
 import React , { useContext, useState, useEffect }from 'react';
 import StoreContext from '../context/store'
-import ProductBox from "./productBox"
+import ProductBox from "./ProductList/productBox"
 
 const ProductList = ({data}) => {
     const { edges: products } = data.allShopifyProduct

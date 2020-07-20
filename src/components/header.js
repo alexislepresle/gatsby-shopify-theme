@@ -38,7 +38,7 @@ const Header = ({ siteTitle }) => {
     <>
       <nav className="navbar" role="navigation" aria-label="main navigation" style={{ display: "flex" }}>
         <div className="navbar-start" style={{ marginLeft: "30px", width: "100%", alignItems: "center", display: "flex" }}>
-          <h1>
+          <h1 className="subtitle">
             <Link aria-label="search" className="has-text-black has-text-weight-bold" to="/">{siteTitle}</Link>
           </h1>
         </div>
