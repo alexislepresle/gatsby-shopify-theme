@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import ProductBox from "../components/ProductList/productBox"
 
 const SearchPage = ({ data }) => {
-    const [search, setSearch] = useState(document.location.search.substring(7).split('=')[0])
+    const [search, setSearch] = useState(typeof window !== undefined ? document.location.search.substring(7).split('=')[0] : "")
     const { edges: products } = data.allShopifyProduct
     return (
         <>

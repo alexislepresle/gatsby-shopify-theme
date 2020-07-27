@@ -3,7 +3,7 @@ import SEO from "../components/seo"
 import { graphql } from "gatsby"
 import ProductInfo from "../components/ProductPage/ProductInfo"
 import StoreContext from '../context/store'
-import VariantSelectors from "../components/ProductPage/variantSelectors"
+import VariantSelectors from "../components/ProductPage/VariantSelectors"
 import QuantityButton from "../components/ProductPage/QuantityButton"
 import Buttons from "../components/ProductPage/Buttons"
 import Gallery from "../components/ProductPage/Gallery"
