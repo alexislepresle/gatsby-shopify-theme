@@ -20,6 +20,13 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-purgecss',
+      options: {
+        develop: true,
+        purgeOnly: ['/all.sass'],
+      },
+    },
+    {
       resolve: "gatsby-source-shopify",
       options: {
         shopName: process.env.SHOP_NAME,

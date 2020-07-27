@@ -44,7 +44,8 @@ const Gallery = ({ product }) => {
                                     <Img
                                         fluid={x.localFile.childImageSharp.fluid}
                                         alt={product.title}
-                                        loading="auto"
+                                        fadeIn={false} 
+                                        loading="eager"
                                         imgStyle={{ WebkitFilter: "blur(1px)", marginBorder: "10px solid black" }}
                                     />
                                 </ThumbnailBox>
@@ -59,7 +60,8 @@ const Gallery = ({ product }) => {
                                 >
                                     <Img
                                         fluid={x.localFile.childImageSharp.fluid}
-                                        loading="auto"
+                                        fadeIn={false} 
+                                        loading="eager"
                                         durationFadeIn={500 * i}
                                         alt={product.title}
 
@@ -83,6 +85,8 @@ const Gallery = ({ product }) => {
                     fluid={currentImage.localFile.childImageSharp.fluid}
                     key={currentImage.localFile.id}
                     alt={product.title}
+                    fadeIn={false} 
+                    loading="eager"
                     className="imgProduct"
                 />
             </Box>

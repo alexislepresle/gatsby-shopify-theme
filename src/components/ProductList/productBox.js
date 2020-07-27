@@ -9,6 +9,8 @@ const ProductBox = props => {
                 <Img
                     fluid={product.node.images[0].localFile.childImageSharp.fluid}
                     key={product.node.images[0].localFile.id}
+                    fadeIn={false} 
+                    loading="eager"
                     alt={product.node.title}
                 />
                 <p className="has-text-weight-semibold has-text-black">{product.node.title}</p>
