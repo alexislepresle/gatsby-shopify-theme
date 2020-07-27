@@ -1,10 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SEO from "../components/seo"
 import { graphql } from "gatsby"
 import ProductBox from "../components/ProductList/productBox"
 
 const SearchPage = ({ data }) => {
-    const [search, setSearch] = useState(typeof window !== undefined ? document.location.search.substring(7).split('=')[0] : "")
+    const [search, setSearch] = useState('')
+
+  useEffect(() => {
+    setSearch(typeof document !== undefined ? document.location.search.substring(7).split('=')[0]: '')
+  }, [search])
+
     const { edges: products } = data.allShopifyProduct
     return (
         <>
