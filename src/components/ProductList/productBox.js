@@ -14,7 +14,7 @@ const ProductBox = props => {
                     alt={product.node.title}
                 />
                 <p className="has-text-weight-semibold has-text-black">{product.node.title}</p>
-                <p className="has-text-weight-light has-text-grey">
+                <p className="has-text-weight-light has-text-grey-dark">
                     ${product.node.variants[0].price}
                 </p>
             </a>
