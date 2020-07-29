@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import StoreContext, { defaultStoreContext } from '../context/store'
 import Header from "../components/header"
 import Footer from "../components/footer"
-import "../components/all.sass"
+import "./layouts.sass"
 import { navigate } from "@reach/router"
 const isBrowser = typeof window !== 'undefined'
 
