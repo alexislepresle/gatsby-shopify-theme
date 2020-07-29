@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.4/libexec/bin/yarn.js add bulma
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.4/libexec/bin/yarn.js add gatsby-image
 
 PATH: 
   /Users/alex/.serverless/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/alex/.serverless/bin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: ENFILE: file table overflow, copyfile '/Users/alex/Library/Caches/Yarn/v6/npm-core-js-3.6.5-7395dc273af37fb2e50e9bd3d9fe841285231d1a-integrity/node_modules/core-js/es/global-this.js' -> '/Users/alex/Documents/freelance/gatsby-shopify-theme/node_modules/core-js/es/global-this.js'
+  Error: EACCES: permission denied, unlink '/Users/alex/Documents/freelance/gatsby-shopify-theme/node_modules/@apollo/client/node_modules/optimism/test.js'
 
 npm manifest: 
   {
@@ -30,10 +30,10 @@ npm manifest:
       "@fortawesome/react-fontawesome": "^0.1.8",
       "apollo-boost": "^0.4.7",
       "axios": "^0.19.2",
-      "bulma": "^0.7.5",
+      "bulma": "^0.9.0",
       "dotenv": "^8.2.0",
       "gatsby": "^2.24.11",
-      "gatsby-cli": "^2.12.66",
+      "gatsby-cli": "^2.12.67",
       "gatsby-image": "^2.2.41",
       "gatsby-plugin-apollo": "^3.0.1",
       "gatsby-plugin-apollo-shopify": "^1.0.2",
@@ -79,7 +79,7 @@ npm manifest:
       "gatsby-theme",
       "gatsby-plugin",
       "storefront-api",
-      " gatsby-starter-kit",
+      "gatsby-starter-kit",
       "shopify",
       "gatsby-site"
     ],
@@ -4061,10 +4061,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
     integrity sha1-hZgoeOIbmOHGZCXgPQF0eI9Wnug=
   
-  bulma@^0.7.5:
-    version "0.7.5"
-    resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.7.5.tgz#35066c37f82c088b68f94450be758fc00a967208"
-    integrity sha512-cX98TIn0I6sKba/DhW0FBjtaDpxTelU166pf7ICXpCCuplHWyu6C9LYZmL5PEsnePIeJaiorsTEzzNk3Tsm1hw==
+  bulma@^0.9.0:
+    version "0.9.0"
+    resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.9.0.tgz#948c5445a49e9d7546f0826cb3820d17178a814f"
+    integrity sha512-rV75CJkubNUroAt0qCRkjznZLoaXq/ctfMXsMvKSL84UetbSyx5REl96e8GoQ04G4Tkw0XF3STECffTOQrbzOQ==
   
   bytes@3.0.0:
     version "3.0.0"
@@ -7119,6 +7119,51 @@ Lockfile:
       yargs "^15.3.1"
       yurnalist "^1.1.2"
   
+  gatsby-cli@^2.12.67:
+    version "2.12.67"
+    resolved "https://registry.yarnpkg.com/gatsby-cli/-/gatsby-cli-2.12.67.tgz#560feec04bc2c8d033f659960609089f004e1390"
+    integrity sha512-HylSJ/wIDmfxX/TYSg9nynub+qjcWglIphkk3NOZTT9eVv5jFBqqAQ8BwU+ZzaVaheYNXCCQF4IfH/INPazQpg==
+    dependencies:
+      "@babel/code-frame" "^7.10.3"
+      "@hapi/joi" "^15.1.1"
+      "@types/common-tags" "^1.8.0"
+      better-opn "^1.0.0"
+      chalk "^2.4.2"
+      clipboardy "^2.3.0"
+      common-tags "^1.8.0"
+      configstore "^5.0.1"
+      convert-hrtime "^3.0.0"
+      envinfo "^7.5.1"
+      execa "^3.4.0"
+      fs-exists-cached "^1.0.0"
+      fs-extra "^8.1.0"
+      gatsby-core-utils "^1.3.14"
+      gatsby-recipes "^0.1.57"
+      gatsby-telemetry "^1.3.23"
+      hosted-git-info "^3.0.4"
+      ink "^2.7.1"
+      ink-spinner "^3.1.0"
+      is-valid-path "^0.1.1"
+      lodash "^4.17.15"
+      meant "^1.0.1"
+      node-fetch "^2.6.0"
+      opentracing "^0.14.4"
+      pretty-error "^2.1.1"
+      progress "^2.0.3"
+      prompts "^2.3.2"
+      react "^16.8.0"
+      redux "^4.0.5"
+      resolve-cwd "^3.0.0"
+      semver "^6.3.0"
+      signal-exit "^3.0.3"
+      source-map "0.7.3"
+      stack-trace "^0.0.10"
+      strip-ansi "^5.2.0"
+      update-notifier "^3.0.1"
+      uuid "3.4.0"
+      yargs "^15.3.1"
+      yurnalist "^1.1.2"
+  
   gatsby-core-utils@^1.0.28:
     version "1.0.28"
     resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.0.28.tgz#aa66e49cdcc1892e7817a32fdd806cf5e16ea309"
@@ -7382,6 +7427,73 @@ Lockfile:
     version "0.1.56"
     resolved "https://registry.yarnpkg.com/gatsby-recipes/-/gatsby-recipes-0.1.56.tgz#f3f7a5f21602c11ab41d8d341dd1fb03bcd3c301"
     integrity sha512-lEd57MLQyBpO3+aoxssnUbwnqFVv8jKIBCclIQONNpLzBl3zml1VAaRx12tnsREn8YEtfYZayM2t3QLiGi9Yzw==
+    dependencies:
+      "@babel/core" "^7.10.3"
+      "@babel/generator" "^7.10.3"
+      "@babel/helper-plugin-utils" "^7.10.3"
+      "@babel/plugin-transform-react-jsx" "^7.10.3"
+      "@babel/standalone" "^7.10.3"
+      "@babel/template" "^7.10.3"
+      "@babel/types" "^7.10.3"
+      "@graphql-tools/schema" "^6.0.11"
+      "@graphql-tools/utils" "^6.0.11"
+      "@hapi/hoek" "8.x"
+      "@hapi/joi" "^15.1.1"
+      "@mdx-js/mdx" "^1.6.6"
+      "@mdx-js/react" "^1.6.6"
+      "@mdx-js/runtime" "^1.6.6"
+      acorn "^7.3.1"
+      acorn-jsx "^5.2.0"
+      cors "^2.8.5"
+      debug "^4.1.1"
+      detect-port "^1.3.0"
+      execa "^4.0.2"
+      express "^4.17.1"
+      express-graphql "^0.9.0"
+      fs-extra "^8.1.0"
+      gatsby-core-utils "^1.3.14"
+      gatsby-telemetry "^1.3.23"
+      glob "^7.1.6"
+      graphql "^14.6.0"
+      graphql-compose "^6.3.8"
+      graphql-subscriptions "^1.1.0"
+      graphql-type-json "^0.3.2"
+      hicat "^0.7.0"
+      html-tag-names "^1.1.5"
+      ink "^2.7.1"
+      ink-box "^1.0.0"
+      ink-link "^1.1.0"
+      ink-select-input "^3.1.2"
+      ink-spinner "^3.1.0"
+      is-binary-path "^2.1.0"
+      is-url "^1.2.4"
+      jest-diff "^25.5.0"
+      lodash "^4.17.15"
+      mkdirp "^0.5.1"
+      node-fetch "^2.6.0"
+      pkg-dir "^4.2.0"
+      prettier "^2.0.5"
+      react-reconciler "^0.25.1"
+      remark-mdx "^1.6.6"
+      remark-parse "^6.0.3"
+      remark-stringify "^8.1.0"
+      resolve-cwd "^3.0.0"
+      semver "^7.3.2"
+      single-trailing-newline "^1.0.0"
+      strip-ansi "^6.0.0"
+      style-to-object "^0.3.0"
+      subscriptions-transport-ws "^0.9.16"
+      svg-tag-names "^2.0.1"
+      unified "^8.4.2"
+      unist-util-visit "^2.0.2"
+      urql "^1.9.8"
+      ws "^7.3.0"
+      xstate "^4.11.0"
+  
+  gatsby-recipes@^0.1.57:
+    version "0.1.57"
+    resolved "https://registry.yarnpkg.com/gatsby-recipes/-/gatsby-recipes-0.1.57.tgz#965b0941fbe7606186d76cb99e48ff35171685c0"
+    integrity sha512-r+WWfiNl84WRT8hzOsG+SImfuvOT/XjfigfwihK4CeYQ/hJjZBsfpKnkXsxkSAZ/C7OGpeOqv59vKvKCO/XT8w==
     dependencies:
       "@babel/core" "^7.10.3"
       "@babel/generator" "^7.10.3"
