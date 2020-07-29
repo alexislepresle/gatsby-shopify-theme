@@ -1,22 +1,12 @@
-import React, { useContext, useState, useEffect } from 'react';
-import StoreContext from '../context/store'
+import React, {useContext} from 'react';
 import ProductBox from "./ProductList/productBox"
 import Sort from "./Filter/sort"
 import Collection from './Filter/collection';
+import StoreContext from '../context/store'
 
 const ProductList = ({ data }) => {
   const { edges: products } = data.allShopifyProduct
   const context = useContext(StoreContext);
-  const [type, setType] = useState(context.filteredType)
-  const [sort, setSort] = useState(context.filteredSort)
-
-  useEffect(() => {
-    context.updateFilterType(type)
-  }, [type])
-
-  useEffect(() => {
-    context.updateFilterSort(sort)
-  }, [sort])
 
 
   return (
@@ -25,10 +15,10 @@ const ProductList = ({ data }) => {
         <div className="container">
           <div className="columns is-mobile" style={{ marginBottom: "60px", margin: "0", padding: "10px" }}>
             <div className="column is-2-desktop is-6-mobile">
-              <Sort sort={sort} setSort={setSort} />
+              <Sort context={context} />
             </div>
             <div className="column is-2-desktop is-6-mobile">
-              <Collection type={type} setType={setType} products={products} />
+              <Collection context={context} products={products} />
             </div>
           </div>
           <div className="columns is-multiline" style={{ margin: "0" }}>

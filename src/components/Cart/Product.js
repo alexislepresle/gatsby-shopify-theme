@@ -25,7 +25,7 @@ const Product = ({ key, line_item }) => {
                 </th>
                 <th style={{verticalAlign: "inherit"}}>
                     <p className="has-text-weight-semibold is-size-5 has-text-black">{line_item.title} ({line_item.variant.title}) </p>
-                    <p className="has-text-weight-normal has-text-danger" onClick={removeItem}>Remove</p>
+                    <button className="has-text-weight-normal has-text-danger link-button" type="button" onClick={removeItem}>Remove</button>
                 </th>
                 <th style={{verticalAlign: "inherit"}}>
                     ${line_item.variant.price}
@@ -45,7 +45,7 @@ const Product = ({ key, line_item }) => {
                     <div className="column">
                         <p className="has-text-weight-semibold is-size-5 has-text-black">{line_item.title}</p>
                         <p className="has-text-weight-normal has-text-black">{line_item.variant.title}</p>
-                        <p className="has-text-weight-normal has-text-danger" onClick={removeItem}>Remove</p>
+                        <button className="has-text-weight-normal has-text-danger link-button" type="button" onClick={removeItem}>Remove</button>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-const Collection = ({type, setType, products}) => {
+const Collection = ({context, products}) => {
+    const [type, setType] = useState(context.filteredType)
+
     const productTypes = []
     const types = []
     types.push(
@@ -21,6 +23,11 @@ const Collection = ({type, setType, products}) => {
         return null
     })
     productTypes.sort()
+
+    const handleFilterType = (value) =>{
+        setType(value)
+        context.updateFilterType(value)
+      }
     return (
         <label htmlFor="filter" className="has-text-weight-semibold is-uppercase" style={{ margin: "-20px" }}>FILTER BY :
             <div className="field">
@@ -28,7 +35,8 @@ const Collection = ({type, setType, products}) => {
                     <div className="select">
                         <select
                             defaultvalues={type}
-                            onChange={e => setType(e.target.value)}
+                            onBlur={e => handleFilterType(e.target.value)}
+                            onChange={e => handleFilterType(e.target.value)}
                             id="filter"
                         >
                             {types}

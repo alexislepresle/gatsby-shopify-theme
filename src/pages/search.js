@@ -8,7 +8,7 @@ const SearchPage = ({ data }) => {
 
   useEffect(() => {
     setSearch(typeof document !== undefined ? document.location.search.substring(7).split('=')[0]: '')
-  }, [search])
+  }, [])
 
     const { edges: products } = data.allShopifyProduct
     return (

@@ -106,7 +106,7 @@ const AddAddressForm = () => {
                                                 <label className="label"  htmlFor="countryInput">Country</label>
                                                 <div className="control">
                                                     <div className="select">
-                                                        <select value={countryInput} onChange={(e) => setCountryInput(e.target.value)} style={{minWidth: "140px",maxWidth: "310px"}}>
+                                                        <select value={countryInput} onChange={(e) => setCountryInput(e.target.value)} onBlur={(e) => setCountryInput(e.target.value)} style={{minWidth: "140px",maxWidth: "310px"}}>
                                                             {
                                                                 countriesAll.map((country)=>(
                                                                     <option value={country.name}>{country.name}</option>
@@ -161,7 +161,7 @@ const AddAddressForm = () => {
                                         }}
                                     >
                                         Add adress</button>
-                                    <p onClick={() => setAddAdressForm(!addAdressForm)}>Cancel</p>
+                                    <button className="link-button" onClick={() => setAddAdressForm(!addAdressForm)} onKeyPress={() => setAddAdressForm(!addAdressForm)}>Cancel</button>
                                 </form>
                             )
                         }}

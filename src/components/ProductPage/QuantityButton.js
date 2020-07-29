@@ -9,8 +9,8 @@ const QuantityButton = ({ quantity, setQuantity }) => {
     }
     return (
         <div className="field">
-            <label className="label">Quantity </label>
-            <div className="control">
+            <label className="label" htmlFor="quantity" >Quantity </label>
+            <div className="control" id="quantity">
                 <div className="field has-addons">
                     <div className="control">
                         <button className="button" onClick={decreaseQuantity}>

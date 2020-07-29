@@ -9,8 +9,8 @@ const Products = ({checkout}) => {
             <table className="table is-fullwidth is-hoverable">
                 <thead className="is-hidden-touch">
                     <tr align="center">
-                        <th></th>
-                        <th></th>
+                        <th> </th>
+                        <th> </th>
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Total</th>
