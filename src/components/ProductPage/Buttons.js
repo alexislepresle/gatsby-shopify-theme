@@ -13,7 +13,7 @@ const Buttons = ({ context, available, productVariant,  quantity}) => {
         <div className="columns">
             <div className="column">
                 <button
-                    className="link-button button is-medium is-fullwidth"
+                    className="button is-medium is-fullwidth"
                     disabled={!available}
                     onClick={handleAddToCart}
                 >
@@ -22,7 +22,7 @@ const Buttons = ({ context, available, productVariant,  quantity}) => {
             </div>
             <div className="column">
                 <button
-                    className="link-button button is-dark is-medium is-fullwidth"
+                    className="button is-dark is-medium is-fullwidth"
                     disabled={!available}
                     onClick={handleAddToCart_BuyNow}
                 >
