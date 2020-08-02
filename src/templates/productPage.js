@@ -15,7 +15,7 @@ const productPage = ({ data }) => {
     const product = data.shopifyProduct;
     const [quantity, setQuantity] = useState(1);
     const [variant, setVariant] = useState(product.variants[0]);
-    const productVariant = context.client.product.helpers.variantForOptions(product, variant) || variant;
+    const productVariant = context.store.client.product.helpers.variantForOptions(product, variant) || variant;
     const [available, setAvailable] = useState(productVariant.availableForSale)
 
     useEffect(() => {
@@ -31,7 +31,7 @@ const productPage = ({ data }) => {
     }, [productVariant])
 
     const checkAvailability = productId => {
-        context.client.product.fetch(productId).then((product) => {
+        context.store.client.product.fetch(productId).then((product) => {
             // this checks the currently selected variant for availability
             const result = product.variants.filter(
                 variant => variant.id === productVariant.shopifyId

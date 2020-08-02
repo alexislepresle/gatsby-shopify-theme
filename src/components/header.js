@@ -17,7 +17,7 @@ const countQuantity = lineItems => {
 
 const Header = ({ siteTitle }) => {
   const context = useContext(StoreContext)
-  const { checkout } = context
+  const { checkout } = context.store
   const [quantity, setQuantity] = useState(countQuantity(checkout ? checkout.lineItems : []))
   const [modal, setModal] = useState(false)
   const [search, setSearch] = useState("")
@@ -55,7 +55,10 @@ const Header = ({ siteTitle }) => {
             <Link aria-label="cart" to="/cart">
               {
                 quantity > 0 ?
-                  <i data-badge="0" className="fas fa-shopping-bag has-text-dark is-size-5" ></i>
+                <>
+                  <div className="shopping-bag-quantity">{quantity}</div>
+                  <FontAwesomeIcon icon={faShoppingBag} className="is-size-5 has-text-dark" />
+                </>
                   :
                   <FontAwesomeIcon icon={faShoppingBag} className="is-size-5 has-text-dark" />
               }

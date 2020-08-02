@@ -7,8 +7,7 @@ import Empty from "../components/Cart/Empty"
 const Cart = () => {
 
     const context = useContext(StoreContext)
-    const { checkout } = context
-
+    const { checkout } = context.store
     return (
         <>
             <Seo />
