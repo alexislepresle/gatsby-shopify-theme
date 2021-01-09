@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { navigate } from "@reach/router"
-import StoreContext, { defaultStoreContext } from '../context/store'
+import StoreContext, { defaultStoreContext } from './store'
 const isBrowser = typeof window !== 'undefined'
 
 
@@ -21,7 +21,7 @@ const Provider = ({ children }) => {
 
             const setCheckoutInState = checkout => {
                 if (isBrowser) {
-                    localStorage.setItem('shopify_checkout_id', JSON.stringify(checkout.id))
+                    localStorage.setItem('shopify_checkout_id', checkout.id)
                 }
 
                 updateStore(state => {
@@ -31,10 +31,12 @@ const Provider = ({ children }) => {
 
             const createNewCheckout = () => store.client.checkout.create()
             const fetchCheckout = id => store.client.checkout.fetch(id)
-
+            console.log(store)
             if (existingCheckoutID) {
                 try {
+                    console.log(existingCheckoutID);
                     const checkout = await fetchCheckout(existingCheckoutID)
+                    console.log("checkout : ", checkout);
 
                     // Make sure this cart hasn’t already been purchased.
                     if (!checkout.completedAt) {
@@ -42,6 +44,7 @@ const Provider = ({ children }) => {
                         return
                     }
                 } catch (e) {
+                    console.log("checkout : ", e);
                     localStorage.setItem('shopify_checkout_id', null)
                 }
             }
