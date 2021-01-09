@@ -31,7 +31,6 @@ const Provider = ({ children }) => {
 
             const createNewCheckout = () => store.client.checkout.create()
             const fetchCheckout = id => store.client.checkout.fetch(id)
-            console.log(store)
             if (existingCheckoutID) {
                 try {
                     console.log(existingCheckoutID);
@@ -44,7 +43,6 @@ const Provider = ({ children }) => {
                         return
                     }
                 } catch (e) {
-                    console.log("checkout : ", e);
                     localStorage.setItem('shopify_checkout_id', null)
                 }
             }
